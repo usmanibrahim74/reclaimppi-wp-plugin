@@ -3,6 +3,7 @@
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ $router->get('/', function () use ($router) {
     return response()->json(['asd' => 'asdasd']);
 });
 
-$router->get('/', [ExampleController::class, '']);
+// $router->get('/', [ExampleController::class, '']);
+$router->post('/lead', 'LeadController@lead');

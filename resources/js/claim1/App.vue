@@ -9,17 +9,20 @@
   import IconPrevious from "./../icons/IconPrevious.vue";
   import IconSelect from "./../icons/IconSelect.vue";
   import HasError from "./../components/HasError.vue"
-  
+  import axios from "axios"
+import console from "console";
+
   // import { current_donation, form } from "./data/resets";
-  
+  const signaturePad = ref(null)
   let state = reactive({
-    step: 3,
+    step: 1,
     errors: [],
     required: [
       ['self_assesment', 'year', 'less_earning', 'ni_number'],
       ['name','dob'],
       ['email','phone','address','postcode','agree', 'signature']
     ],
+    url: '/index.php/ReclaimPPI/lead',
     form: [
       {
         self_assesment: null,
@@ -49,8 +52,9 @@
       }
     ]
   });
-  onMounted(() => {});
-  
+  onMounted(() => {
+  });
+
   function validate(){
     const required = Object.values(state.required[state.step-1]);
     const form = state.form[state.step-1];
@@ -63,7 +67,7 @@
       errors.push('year');
     }
     if(state.step == 2){
-      console.log(empty_keys);
+    //   console.log(empty_keys);
       if(["title","first_name","last_name"].some(k => empty_keys.includes(k))){
         errors.push('name');
       }
@@ -80,13 +84,32 @@
         state.step++;
       }
     }
-    
+
   }
   function stepBack() {
     if (state.step >= 1 && state.step <= 4) state.step--;
   }
+  function submit(){
+    const {isEmpty, data} = signaturePad.value.saveSignature();
+    if(!isEmpty) {
+        state.form[3].signature = data
+        const form = {
+            ...state.form[0],
+            ...state.form[1],
+            ...state.form[2],
+            ...state.form[3],
+        }
+      axios.post(state.url, form)
+    } else {
+        state.errors.push('signature')
+        window.console.log(state.errors)
+    }
+  }
+  function clearSignature() {
+    signaturePad.value.clearSignature()
+  }
   </script>
-  
+
   <template>
     <div class="smodal">
       <div class="smodal__body">
@@ -339,7 +362,7 @@
                 <div class="swizard__input__item">
                   <select v-model="state.form[1].year" class="swizard__input__item__box">
                     <option :value="null">Year</option>
-                    <option :value="v" :key="v" v-for="v in 101">{{ new Date().getFullYear() - v + 1 }}</option>
+                    <option :value="new Date().getFullYear() - v + 1" :key="v" v-for="v in 101">{{ new Date().getFullYear() - v + 1 }}</option>
 
                   </select>
                   <span class="swizard__input__item__right-icon"
@@ -419,11 +442,11 @@
                   any tax rebate purposes.</small
                 >
               </label>
-            
+
 
             </div>
             <HasError field="agree" :errors="state.errors" />
-  
+
             <div class="swizard__submit">
               <button
                 type="button"
@@ -471,14 +494,21 @@
             <div class="swizard__input">
               <p>Please draw your signature below in the green box.</p>
               <div class="swizard__input__item">
-                <VueSignaturePad width="500px" height="500px" ref="signaturePad" />
+                <VueSignaturePad
+                width="100%"
+                height="200px"
+                style="border:1px solid green; background-color: white"
+                ref="signaturePad"
+                   />
+                   <HasError field="signature" :errors="state.errors" message="Signature required" />
               </div>
             </div>
-            <small>Clear Signature</small>
+            <small style="cursor: pointer" @click="clearSignature">Clear Signature</small>
             <div class="swizard__submit">
               <button
                 type="button"
                 class="sbutton sbutton__primary sbutton--active"
+                @click="submit"
               >
                 Start Your Claim
               </button>
@@ -491,7 +521,7 @@
               </button>
             </div>
           </div>
-          
+
         </div>
       </div>
       <!-- <Footer :donations="state.donations" /> -->
