@@ -37,57 +37,41 @@ $btnBg: #DA2327;
         position: relative !important;
         display: flex !important;
         flex-direction: column !important;
-        max-height: 90% !important;
         margin: 0 1rem !important;
         border: 1px solid #e2e8f0 !important;
-        border-radius: 3rem !important;
         background: #fff !important;
-        width: 100% !important;
         overflow-y: auto !important;
         -ms-overflow-style: none !important;
         scrollbar-width: none !important;
+        width: 600px;
+        height: 250px;
+        padding: 10px 0px;
         &::-webkit-scrollbar {
           display: none !important;  /* Safari and Chrome */
       }
     }
     &__header{
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
         max-width: 100% !important;
         width: 100% !important;
-        margin: 0 auto !important;
         position: relative !important;
-        padding: 1rem !important;
-    }
-    &__logo{
-
-        max-width: 100px !important;
-        img{
-            width: 100% !important;
-        }
+        border-bottom:1px solid $inputColor ;
     }
     &__close{
         position: absolute !important;
         right: 20px !important;
-        top: 10px !important;
+        top: 30px !important;
         border-radius: 50% !important;
         border: none !important;
-        height: 70px !important;
-        width: 70px !important;
+        height: 10px !important;
+        width: 10px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        font-size: 60px !important;
+        font-size: 30px !important;
         line-height: 1 !important;
         color: #aaa !important;
         cursor: pointer !important;
-        background-color: #ddd !important;
         padding: 0 !important;
-    }
-    &__body{
-      max-width: calc($modal-width - $modal-side-spacing);
-      margin: 0 auto !important;
     }
     &__title{
         font-size: 28px !important;
@@ -105,7 +89,7 @@ $btnBg: #DA2327;
     width: 100% !important;
     max-width: 700px !important;
     margin: 50px auto !important;
-  
+
 
     &__step{
       display: flex !important;

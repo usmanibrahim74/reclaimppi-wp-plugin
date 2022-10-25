@@ -9,6 +9,7 @@
   import IconPrevious from "./../icons/IconPrevious.vue";
   import IconSelect from "./../icons/IconSelect.vue";
   import HasError from "./../components/HasError.vue"
+  import { VueFinalModal } from "vue-final-modal";
   import axios from "axios"
 import console from "console";
 
@@ -50,7 +51,8 @@ import console from "console";
         referal_code: null,
         signature: null,
       }
-    ]
+    ],
+    showModal: false
   });
   onMounted(() => {
   });
@@ -112,6 +114,22 @@ import console from "console";
 
   <template>
     <div class="smodal">
+        <vue-final-modal
+      v-slot="{ close }"
+      classes="smodal__container"
+      content-class="smodal__content"
+      v-model="state.showModal"
+    >
+    <div class="smodal__header">
+        <p>Warning !</p>
+        <button type="button" class="smodal__close" @click="close">
+          <span>&times;</span>
+        </button>
+    </div>
+    <div class="smodal__body">
+        <p>National insurance (NI) Number</p>
+    </div>
+</vue-final-modal>
       <div class="smodal__body">
         <div class="swizard">
           <div class="sprogress-bar">
@@ -272,7 +290,7 @@ import console from "console";
               <p>National insurance (NI) Number</p>
               <div class="swizard__input__item">
                 <input type="text" v-model="state.form[0].ni_number" class="swizard__input__item__box" />
-                <span class="swizard__input__item__right-icon"><IconInfo /></span>
+                <span class="swizard__input__item__right-icon" @click="state.showModal = true"><IconInfo /></span>
               </div>
             </div>
             <div class="swizard__sign__checkbox">
@@ -524,6 +542,5 @@ import console from "console";
 
         </div>
       </div>
-      <!-- <Footer :donations="state.donations" /> -->
     </div>
   </template>
