@@ -8,10 +8,10 @@ function reclaimppi_claim($arr){
             $doc = new DOMDocument();
             $doc->loadHTMLFile($claim_file);
 
-            add_action( 'wp_enqueue_scripts', function()use($doc){
+            // add_action( 'wp_enqueue_scripts', function()use($doc){
                 load_scripts($doc);
                 load_styles($doc);
-            } );
+            // } );
             
             ob_start();
             include PLUGIN_DIR.'public/claim.php' ;

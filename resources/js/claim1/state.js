@@ -14,6 +14,12 @@ export default reactive({
     year: Object.keys(year),
     name: Object.keys(name),
     dob: Object.keys(dob),
+    steps: [
+        {title: "PPI Claim Details", number: 1 },
+        {title: "About You", number: 2 },
+        {title: "Contact Details", number: 3 },
+        {title: "Start Claim", number: 4 },
+    ],
     required: [
       ["self_assesment", "year", "less_earning", "ni_number"],
       ["name", "dob"],
