@@ -284,16 +284,33 @@ $btnBg: #DA2327;
         & input + label {
           display: flex;
           align-items: center;
+          position: relative;
+          cursor: pointer;
          &::before{
-          content: "";
+            content: "";
             display: inline-block;
-            width: 10px;
-            height: 10px;
-            padding: 3px;
+            width: 12px;
+            height: 12px;
+            padding: 4px;
             margin-right: 10px;
             background-clip: content-box;
             border: 1px solid #bbbbbb;
             border-radius: 50%;
+            background-color: #fff;
+            z-index: 1;
+         }
+         &::after{
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 12px;
+          height: 12px;
+          background: white;
+          padding: 4px;
+          border-radius: 50%;
+          margin: 0px;
          }
         }
         & input:checked + label {
@@ -337,9 +354,10 @@ $btnBg: #DA2327;
         &__box{
           background: #FFFFFF;
           border: 1px solid #D9D9D9;
-          padding: 15px 10px;
           width: 100%;
-          padding-left: 40px;
+          padding: 5px 60px;
+          font-size: 16px;
+          line-height: 2;
           &:focus{
             border: 1px solid #D9D9D9;
             outline: none;
@@ -348,10 +366,14 @@ $btnBg: #DA2327;
         &__left-icon{
           position: absolute;
           top: 50%;
-          transform: translate(-50%, -50%);
-          left: 1rem;
-          padding: 14px;
+          transform: translateY(-50%);
+          left: 0;
+          height: 100%;
+          width: 50px;
           border-right: 1px solid #D9D9D9;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         &__right-icon{
           position: absolute;
@@ -640,6 +662,7 @@ $btnBg: #DA2327;
         margin: 0 !important;
         font-size: 1rem !important;
         margin-top: 4px !important;
+        cursor: pointer;
       }
     }
   }
