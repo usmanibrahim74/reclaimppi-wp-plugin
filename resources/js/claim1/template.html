@@ -214,7 +214,7 @@
               <div class="swizard__input__item">
                 <select
                   v-model="state.form[1].title"
-                  class="swizard__input__item__box"
+                  class="swizard__input__item__box select"
                 >
                   <option :value="null">Select</option>
                   <option value="Nr.">Mr.</option>
@@ -256,7 +256,7 @@
               <div class="swizard__input__item">
                 <select
                   v-model="state.form[1].day"
-                  class="swizard__input__item__box"
+                  class="swizard__input__item__box select"
                 >
                   <option :value="null">Day</option>
                   <option :value="v" :key="v" v-for="v in 31">{{ v }}</option>
@@ -270,7 +270,7 @@
               <div class="swizard__input__item">
                 <select
                   v-model="state.form[1].month"
-                  class="swizard__input__item__box"
+                  class="swizard__input__item__box select"
                 >
                   <option :value="null">Month</option>
                   <option :value="v" :key="v" v-for="v in 12">{{ v }}</option>
@@ -284,7 +284,7 @@
               <div class="swizard__input__item">
                 <select
                   v-model="state.form[1].year"
-                  class="swizard__input__item__box"
+                  class="swizard__input__item__box select"
                 >
                   <option :value="null">Year</option>
                   <option
@@ -335,23 +335,25 @@
             <p>Email</p>
             <div class="swizard__input__item">
               <input
-                type="text"
+                type="email"
                 v-model="state.form[2].email"
                 class="swizard__input__item__box"
               />
             </div>
             <HasError field="email" :errors="state.errors" />
+            <HasError field="invalid_email" :errors="state.errors" message="Invalid Email" />
           </div>
           <div class="swizard__input">
             <p>Phone Number</p>
             <div class="swizard__input__item">
               <input
-                type="text"
+                type="tel"
                 v-model="state.form[2].phone"
                 class="swizard__input__item__box"
               />
             </div>
             <HasError field="phone" :errors="state.errors" />
+            <HasError field="invalid_phone" :errors="state.errors" message="Invalid Phone Number" />
           </div>
           <div class="swizard__input">
             <p>Address</p>

@@ -6,7 +6,7 @@
         </button>
       </div>
       <div class="smodal__body">
-        <p>{{ props.text }}</p>
+        <p class="smodal__body__p">{{ props.text }}</p>
       </div>
       <div class="smodal__footer">
         <button @click="$emit('close')" class="smodal__footer__btn">close</button>

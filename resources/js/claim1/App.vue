@@ -27,7 +27,15 @@ function validate() {
   if (state.step == 2) {
     hasSome(Object.values(state.name), empty_keys) && errors.push("name");
     hasSome(Object.values(state.dob), empty_keys) && errors.push("dob");
-    console.log(errors);  
+  }
+  if (state.step == 3) {
+    var re = /\S+@\S+\.\S+/;
+    if(form.email != null && !re.test(form.email)) {
+        errors.push("invalid_email")
+    }
+    if(form.phone != null && (form.phone.length != 11 || form.phone.charAt(0) != "0")) {
+        errors.push("invalid_phone")
+    }
   }
   state.errors = [...errors];
   return !state.errors.length;
