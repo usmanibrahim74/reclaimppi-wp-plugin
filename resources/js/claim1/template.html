@@ -7,6 +7,22 @@
     >
       <ModalMarkup title="Warning!!!" :text="state.self_assesment_message" @close="close" />
     </vue-final-modal>
+    <vue-final-modal
+      v-slot="{ close }"
+      classes="smodal__container"
+      content-class="smodal__content"
+      v-model="state.showYearsInfoModal"
+    >
+      <ModalMarkup title="Warning!!!" :text="state.self_assesment_message" @close="close" />
+    </vue-final-modal>
+    <vue-final-modal
+      v-slot="{ close }"
+      classes="smodal__container"
+      content-class="smodal__content"
+      v-model="state.showNIModal"
+    >
+      <ModalMarkup title="Warning!!!" :text="state.self_assesment_message" @close="close" />
+    </vue-final-modal>
     <div class="smodal__body">
       <div class="swizard">
         <ProgressBar :step="state.step" />
@@ -63,7 +79,7 @@
                   v-model="state.form[0].year_1"
                   class="swizard__years__items__item__box hide-arrows"
                 />
-                <span class="swizard__years__items__item__right-icon"
+                <span class="swizard__years__items__item__right-icon" @click="state.showYearsInfoModal = true"
                   ><IconInfo
                 /></span>
               </div>
@@ -77,7 +93,7 @@
                   v-model="state.form[0].year_2"
                   class="swizard__years__items__item__box hide-arrows"
                 />
-                <span class="swizard__years__items__item__right-icon"
+                <span class="swizard__years__items__item__right-icon" @click="state.showYearsInfoModal = true"
                   ><IconInfo
                 /></span>
               </div>
@@ -91,7 +107,7 @@
                   v-model="state.form[0].year_3"
                   class="swizard__years__items__item__box hide-arrows"
                 />
-                <span class="swizard__years__items__item__right-icon"
+                <span class="swizard__years__items__item__right-icon" @click="state.showYearsInfoModal = true"
                   ><IconInfo
                 /></span>
               </div>
@@ -105,7 +121,7 @@
                   v-model="state.form[0].year_4"
                   class="swizard__years__items__item__box hide-arrows"
                 />
-                <span class="swizard__years__items__item__right-icon"
+                <span class="swizard__years__items__item__right-icon" @click="state.showYearsInfoModal = true"
                   ><IconInfo
                 /></span>
               </div>
@@ -155,8 +171,8 @@
                 class="swizard__input__item__box"
               />
               <span
-                class="swizard__input__item__right-icon"
-                @click="state.showModal = true"
+                class="swizard__input__item__right-icon ni-number"
+                @click="state.showNIModal = true"
                 ><IconInfo
               /></span>
             </div>
@@ -173,7 +189,7 @@
             </label>
           </div>
           <HasError field="ni_number" :errors="state.errors" />
-          
+
           <div class="swizard__submit" v-if="!state.form[0].self_assesment">
               <button
               type="button"
