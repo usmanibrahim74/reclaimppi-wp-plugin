@@ -5,8 +5,10 @@ const name = { title: null, first_name: null,last_name: null}
 const dob = { day: null, month: null,year: null}
 export default reactive({
     url: "/index.php/ReclaimPPI/lead",
-    step: 4,
+    step: 3,
     showAssesmentModal: false,
+    showYearsInfoModal: false,
+    showNIModal: false,
     self_assesment_message:"Unfortunately we can’t proceed with your claim and you will have to contact your accountant to do this for you.",
     errors: [],
     year: Object.keys(year),
@@ -47,5 +49,5 @@ export default reactive({
         signature: null,
       },
     ],
-    
+
   });

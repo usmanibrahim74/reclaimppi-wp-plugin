@@ -38,14 +38,15 @@ $btnBg: #DA2327;
         display: flex !important;
         flex-direction: column !important;
         margin: 0 1rem !important;
-        border: 1px solid #e2e8f0 !important;
+        border: 0px !important;
         background: #fff !important;
         overflow-y: auto !important;
         -ms-overflow-style: none !important;
         scrollbar-width: none !important;
-        width: 600px;
-        height: 250px;
-        padding: 10px 0px;
+        width: 500px;
+        min-height: 230px;
+        box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 30%) !important;
+
         &::-webkit-scrollbar {
           display: none !important;  /* Safari and Chrome */
       }
@@ -54,7 +55,11 @@ $btnBg: #DA2327;
         max-width: 100% !important;
         width: 100% !important;
         position: relative !important;
-        border-bottom:1px solid $inputColor ;
+        border-bottom:1px solid #e9ecef;
+        padding: 0px 10px;
+    }
+    &__body {
+        padding: 0px 10px;
     }
     &__close{
         position: absolute !important;
@@ -74,13 +79,44 @@ $btnBg: #DA2327;
         padding: 0 !important;
     }
     &__title{
-        font-size: 28px !important;
-        text-align: center !important;
-        font-weight: bold !important;
-
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        letter-spacing: 0;
+        margin-bottom: 1.5rem;
     }
     &_subtitle{
       text-align: center !important;
+    }
+    &__footer {
+        padding: 10px 10px 0px;
+        border-top: 1px solid #e9ecef;
+        text-align: right;
+        &__btn{
+                border: none;
+                color: #fff;
+                background: #2955a9;
+                outline: none;
+                cursor: pointer;
+                display: inline-block;
+                text-decoration: none;
+                padding: 12px 25px;
+                color: #fff;
+                font-weight: 600;
+                text-align: center;
+                line-height: 1;
+                -moz-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
+                -webkit-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                -ms-border-radius: 3px;
+                border-radius: 3px;
+                font-size: 14px;
+                font-size: 0.875rem;
+        }
     }
 }
 .sprogress-bar{
@@ -339,6 +375,11 @@ $btnBg: #DA2327;
        top: 50%;
        transform: translate(-50%, -50%);
        right: 0.5rem;
+       &.ni-number{
+        top: 60%;
+        right: 0.1rem;
+        cursor: pointer;
+       }
     }
     }
   }
