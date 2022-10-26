@@ -9,14 +9,11 @@
     </vue-final-modal>
     <div class="smodal__body">
       <div class="swizard">
-        <ProgressBar :step="state.step" />
+        <div class="sprogress-bar">
+            <progress-step v-for="(s,i) in state.steps" :key="i" :title="s.title" :number="s.number" :step="i+1" :current="state.step" />
+        </div>
         <div class="swizard__step" v-if="state.step == 1">
-          <div class="swizard__title">
-            <p class="swizard__title__p text-center">
-              Please enter your PPI Claim details
-            </p>
-            <hr class="swizard__title__line" />
-          </div>
+          <step-title title="Please enter your PPI Claim details" />
           <div class="swizard__radio">
             <p>
               Were you required to complete a Self-Assessment the year you got
@@ -186,12 +183,9 @@
         <HasError v-else style="text-align: center;" field="already_assessed" :errors="['already_assessed']" :message="state.self_assesment_message" />
         </div>
         <div class="swizard__step" v-if="state.step == 2">
-          <div class="swizard__title">
-            <p class="swizard__title__p text-center">
-              Please complete your details below to start your claim
-            </p>
-            <hr class="swizard__title__line" />
-          </div>
+          
+          <step-title title="Please complete your details below to start your claim" />
+
           <div class="swizard__about">
             <div class="swizard__input swizard__about__item">
               <p>Title</p>
@@ -309,12 +303,8 @@
           </div>
         </div>
         <div class="swizard__step" v-if="state.step == 3">
-          <div class="swizard__title">
-            <p class="swizard__title__p text-center">
-              Enter your contact details to claim your tax back
-            </p>
-            <hr class="swizard__title__line" />
-          </div>
+            <step-title title="Enter your contact details to claim your tax back" />
+        
           <div class="swizard__input">
             <p>Email</p>
             <div class="swizard__input__item">
@@ -393,26 +383,7 @@
           </div>
         </div>
         <div class="swizard__step" v-if="state.step == 4">
-          <div class="swizard__claim swizard__title">
-            <h3>Great News!</h3>
-            <p class="swizard__claim__congrat">
-              <span class="swizard__claim__success">Congratulations, </span> You
-              100% meet the criteria
-            </p>
-            <p class="swizard__claim__time">
-              Our customers get money back in 6 Weeks!
-            </p>
-            <hr class="swizard__title__line" />
-          </div>
-          <div class="swizard__claim__message">
-            <p>
-              Signing below agrees you into our
-              <span class="swizard__claim__message__terms"
-                >terms and conditions</span
-              >
-              and our NO WIN NO FEE services.
-            </p>
-          </div>
+          <great-news />
           <div class="swizard__input">
             <p>Do you have a referral code? (optional)</p>
             <div class="swizard__input__item">

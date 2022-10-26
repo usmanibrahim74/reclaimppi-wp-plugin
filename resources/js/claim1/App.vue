@@ -1,10 +1,12 @@
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref} from "vue";
 import axios from "axios";
 import state from "./state";
 import Reusable from "../reuseable";
-import ProgressBar from "../components/ProgressBar.vue";
+import ProgressStep from './../components/ProgressStep.vue';
+import StepTitle from './../components/StepTitle.vue';
+import GreatNews from './../components/GreatNews.vue';
 
 const { filterEmptyKeys, hasSome, hasEvery, arrayIntersection } = Reusable();
 const signaturePad = ref(null);
