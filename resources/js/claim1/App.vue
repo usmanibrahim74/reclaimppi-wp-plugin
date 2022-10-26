@@ -25,6 +25,10 @@ function validate() {
   if (state.step == 1) {
     hasEvery(Object.values(state.year), empty_keys) && errors.push("year");
     form.self_assesment && errors.push('already_assessed');
+    var ni_regex = new RegExp('^[a-zA-Z]{2}[0-9]{6}[a-zA-Z]{1}$');
+    if(form.ni_number != null && !ni_regex.test(form.ni_number)) {
+        errors.push('invalid_ni')
+    }
   }
   if (state.step == 2) {
     hasSome(Object.values(state.name), empty_keys) && errors.push("name");
@@ -54,12 +58,13 @@ function stepBack() {
 function clearSignature(){
   signaturePad.value.clearSignature();
 }
-function submit() {
+async function submit() {
   const { isEmpty, data } = signaturePad.value.saveSignature();
   if (isEmpty) {
     state.errors.push("signature");
     return;
   }
+  state.loading = true
   state.form[3].signature = data;
   const form = {
     ...state.form[0],
@@ -67,7 +72,9 @@ function submit() {
     ...state.form[2],
     ...state.form[3],
   };
-  axios.post(state.url, form);
+  await axios.post(state.url, form);
+  state.loading = false
+  window.location.href = '/thank-you'
 }
 </script>
 

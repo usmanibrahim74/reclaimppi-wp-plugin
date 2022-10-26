@@ -13,7 +13,7 @@
       content-class="smodal__content"
       v-model="state.showYearsInfoModal"
     >
-      <ModalMarkup title="Warning!!!" :text="state.self_assesment_message" @close="close" />
+      <ModalMarkup title="Info!" :text="state.years_message" @close="close" />
     </vue-final-modal>
     <vue-final-modal
       v-slot="{ close }"
@@ -21,7 +21,7 @@
       content-class="smodal__content"
       v-model="state.showNIModal"
     >
-      <ModalMarkup title="Warning!!!" :text="state.self_assesment_message" @close="close" />
+      <ModalMarkup title="Info!" :text="state.ni_message" @close="close" />
     </vue-final-modal>
     <div class="smodal__body">
       <div class="swizard">
@@ -173,6 +173,7 @@
                 ><IconInfo
               /></span>
             </div>
+            <HasError field="invalid_ni" :errors="state.errors" message="Invalid NI Number" />
           </div>
           <div class="swizard__sign__checkbox">
             <input
@@ -199,7 +200,7 @@
         <HasError v-else style="text-align: center;" field="already_assessed" :errors="['already_assessed']" :message="state.self_assesment_message" />
         </div>
         <div class="swizard__step" v-if="state.step == 2">
-          
+
           <step-title title="Please complete your details below to start your claim" />
 
           <div class="swizard__about">
@@ -320,7 +321,7 @@
         </div>
         <div class="swizard__step" v-if="state.step == 3">
             <step-title title="Enter your contact details to claim your tax back" />
-        
+
           <div class="swizard__input">
             <p>Email</p>
             <div class="swizard__input__item">
@@ -435,8 +436,14 @@
               type="button"
               class="sbutton sbutton__primary sbutton--active"
               @click="submit"
+              :disabled="state.loading"
             >
-              Start Your Claim
+              <template v-if="state.loading">
+                Please Wait ---
+              </template>
+              <template v-else>
+                Start Your Claim
+              </template>
             </button>
             <button
               type="button"
