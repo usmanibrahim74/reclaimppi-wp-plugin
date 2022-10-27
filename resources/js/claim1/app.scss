@@ -432,7 +432,7 @@ $btnBg: #DA2327;
     @media screen and (max-width: 480px) {
       flex-direction: column;
       &__items:not(:first-child){
-        margin-top: 15px !important;
+        // margin-top: 15px !important;
       }
     }
     &__items{
@@ -440,7 +440,7 @@ $btnBg: #DA2327;
       
       p{
         margin-bottom: 4px;
-        margin-top: 0;
+        margin-top: 14px;
       }
       &__item{
         position: relative;
