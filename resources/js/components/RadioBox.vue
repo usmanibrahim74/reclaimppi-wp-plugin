@@ -15,9 +15,13 @@
     const props = defineProps({
         
         modelValue: {
-            default: null,
+
+            type: Boolean,
+            default: false,
         },
         value: {
+
+            type: Boolean,
             default: false,
         },
         name: String,
@@ -35,9 +39,8 @@
         type="radio"
         :name="props.name"
         :value="props.value"
-        @click="$emit('click')"
         :checked="isChecked" 
-        @change="$emit('update:modelValue', $event.target.value)"
+        @change="$emit('update:modelValue', $event.target.value == 'true')"
     />
     <label :for="state.uuid"><span>{{ props.label }} </span></label>
     </div>

@@ -83,6 +83,10 @@ $btnBg: #DA2327;
         cursor: pointer !important;
         padding: 0 !important;
     }
+
+    .step-title{
+      font-size: 22px !important;
+    }
     &__title{
         font-weight: 400;
         font-size: 1.2rem;
@@ -310,8 +314,8 @@ $btnBg: #DA2327;
   &__title{
      &__p{
       color: $colorBlack;
-      font-weight: 500;
-      font-size: 16px;
+      font-weight: bold;
+      font-size: 18px;
       margin-top: 10px !important;
      }
      &__line {
@@ -323,7 +327,8 @@ $btnBg: #DA2327;
     margin-top: 15px !important;
     margin-bottom: 15px !important;
     & p {
-        font-weight: 400;
+        font-weight: bold;
+        font-size: 18px;
         margin-bottom: 6px;
     }
     &__items{
@@ -382,7 +387,7 @@ $btnBg: #DA2327;
     & p {
         margin: 0px !important;
         margin-bottom: 5px !important;
-        font-weight: 400 !important;
+        font-weight: bold !important;
     }
     &__item{
       position: relative;
@@ -426,11 +431,13 @@ $btnBg: #DA2327;
     justify-content: space-between;
     @media screen and (max-width: 480px) {
       flex-direction: column;
-
+      &__items:not(:first-child){
+        margin-top: 15px !important;
+      }
     }
     &__items{
       flex-basis: 48% !important;
-      margin-top: 15px !important;
+      
       p{
         margin-bottom: 4px;
         margin-top: 0;

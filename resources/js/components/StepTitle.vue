@@ -1,6 +1,6 @@
 <template>
     <div class="swizard__title">
-            <p class="swizard__title__p text-center">
+            <p class="swizard__title__p text-center step-title">
               {{props.title}}
             </p>
             <hr class="swizard__title__line" />

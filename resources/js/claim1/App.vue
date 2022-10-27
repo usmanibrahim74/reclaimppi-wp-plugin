@@ -25,6 +25,13 @@ const niCheckDisabled = computed(()=> {
   return state.form[0].ni_number?.length
 })
 
+function selfAssesedClick(){
+  setTimeout(()=>{
+    console.log(state.form[0]);
+    state.showAssesmentModal = true
+  },0)
+}
+
 
 function validate() {
   const required = Object.values(state.required[state.step - 1]);
@@ -38,7 +45,7 @@ function validate() {
     hasEvery(Object.values(state.year), empty_keys) && errors.push("year");
     form.self_assesment && errors.push('already_assessed');
     var ni_regex = new RegExp('^[a-zA-Z]{2}[0-9]{6}[a-zA-Z]{1}$');
-    if(form.ni_number != null && !ni_regex.test(form.ni_number)) {
+    if(![null,''].includes(form.ni_number) && !ni_regex.test(form.ni_number)) {
         errors.push('invalid_ni')
     }
   }

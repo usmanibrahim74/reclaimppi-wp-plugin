@@ -27,7 +27,7 @@
         <radio-question question="Were you required to complete a Self-Assessment the year you got your PPI refund?"
           field="self_assesment" :errors="state.errors">
           <radio-box name="self_assesment" v-model="state.form[0].self_assesment" :value="true" label="Yes"
-            @click="state.showAssesmentModal = true" />
+            @update:modelValue="selfAssesedClick" />
           <radio-box name="self_assesment" v-model="state.form[0].self_assesment" :value="false" label="No" />
         </radio-question>
 
