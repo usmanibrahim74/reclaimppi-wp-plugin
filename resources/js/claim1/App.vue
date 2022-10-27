@@ -1,17 +1,29 @@
 
 <script setup>
-import { onMounted, ref} from "vue";
+import { computed, onMounted, ref} from "vue";
 import axios from "axios";
 import state from "./state";
 import Reusable from "../reuseable";
 import ProgressStep from './../components/ProgressStep.vue';
 import StepTitle from './../components/StepTitle.vue';
 import GreatNews from './../components/GreatNews.vue';
+import RadioBox from "../components/RadioBox.vue";
+import RadioQuestion from "../components/RadioQuestion.vue";
+import AmountBox from "../components/AmountBox.vue";
+import InputText from "../components/InputText.vue";
+import InputSelect from "../components/InputSelect.vue";
 
-const { filterEmptyKeys, hasSome, hasEvery, arrayIntersection } = Reusable();
+import options from "./options.json";
+
+const { filterEmptyKeys, hasSome, hasEvery, arrayIntersection, range } = Reusable();
 const signaturePad = ref(null);
 
 onMounted(() => {});
+
+const niCheckDisabled = computed(()=> {
+  state.form[0].cant_remember = false;
+  return state.form[0].ni_number?.length
+})
 
 
 function validate() {
@@ -53,7 +65,8 @@ function stepForward() {
   }
 }
 function stepBack() {
-  if (state.step >= 1 && state.step <= 4) state.step--;
+  console.log('back');
+  if (state.step > 1 && state.step <= 4) state.step--;
 }
 function clearSignature(){
   signaturePad.value.clearSignature();

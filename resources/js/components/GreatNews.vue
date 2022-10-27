@@ -13,8 +13,8 @@
           <div class="swizard__claim__message">
             <p>
               Signing below agrees you into our
-              <span class="swizard__claim__message__terms"
-                >terms and conditions</span
+              <a target="__blank" href="/terms-conditions" class="swizard__claim__message__terms"
+                >terms and conditions</a
               >
               and our NO WIN NO FEE services.
             </p>

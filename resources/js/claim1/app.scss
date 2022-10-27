@@ -140,6 +140,9 @@ $btnBg: #DA2327;
       justify-content: space-evenly !important;
       color: #ddd;
 
+      
+    
+
       &:before{
           content: '' !important;
           display:block !important;
@@ -290,10 +293,11 @@ $btnBg: #DA2327;
   flex-direction: column !important;
 
   &__step{
-     margin: 10px 0px !important;
-     width: 650px !important;
-     padding:20px  50px !important;
-    background: $stepBg;
+    margin: 10px auto !important;
+    max-width: 630px!important;
+    padding: 20px 30px!important;
+    background: #FEF9F2;
+    width: 100%;
   }
 
   &__button{
@@ -327,6 +331,9 @@ $btnBg: #DA2327;
         margin-right: 50px !important;
         & input {
           display: none;
+          &:checked + label{
+            color: #20CE44;
+          }
         }
         & input + label {
           display: flex;
@@ -369,6 +376,8 @@ $btnBg: #DA2327;
     }
   }
   &__input{
+    margin-top: 20px;
+
     & p {
         margin: 0px !important;
         margin-bottom: 5px !important;
@@ -379,17 +388,16 @@ $btnBg: #DA2327;
       &__box{
         background: #FFFFFF !important;
         border: 1px solid #D9D9D9 !important;
-        padding: 15px 10px;
+        padding: 5px 10px;
+        font-size: 16px;
+        line-height: 2;
         width: 100% !important;
-        margin-bottom: 15px !important;
+        // margin-bottom: 15px !important;
         height: auto !important;
         &:focus{
           box-shadow: none !important;
           border: 1px solid #D9D9D9 !important;
           outline: none !important;
-        }
-        &.select{
-            line-height: 1 !important;
         }
       }
     &__right-icon{
@@ -398,8 +406,13 @@ $btnBg: #DA2327;
        transform: translate(-50%, -50%);
        right: 0.5rem;
        &.ni-number{
-        top: 40%;
-        right: 0.1rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0.5rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
         cursor: pointer;
        }
     }
@@ -409,17 +422,25 @@ $btnBg: #DA2327;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    justify-content: space-between;
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+
+    }
     &__items{
-      flex: 50% !important;
+      flex-basis: 48% !important;
       margin-top: 15px !important;
+      p{
+        margin-bottom: 4px;
+        margin-top: 0;
+      }
       &__item{
         position: relative;
-        padding-right: 10px;
         &__box{
           background: #FFFFFF !important;
           border: 1px solid #D9D9D9 !important;
           width: 100%;
-          padding: 5px 60px !important;
+          padding: 5px 40px 5px 60px!important;
           font-size: 16px;
           line-height: 2 !important;
           &:focus{
@@ -443,7 +464,7 @@ $btnBg: #DA2327;
         &__right-icon{
           position: absolute;
           top: 50%;
-          transform: translate(-50%, -50%);
+          transform: translateY(-50%);
           right: 0.5rem;
           height: 100%;
           display: flex;
@@ -460,6 +481,13 @@ $btnBg: #DA2327;
     &__item{
       padding-right: 10px;
       flex: 33%;
+      margin-top: 0;
+    }
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+      &__item:not(:first-child){
+        margin-top: 20px;
+      }
     }
   }
   &__claim{
@@ -485,6 +513,7 @@ $btnBg: #DA2327;
       margin-bottom: 30px !important;
       &__terms{
         color: #DA2327;
+        text-decoration: none;
       }
     }
   }
@@ -709,9 +738,9 @@ $btnBg: #DA2327;
     }
     &__checkbox{
       display:flex !important;
-      align-items: center !important;
+      align-items: flex-start !important;
       column-gap: 5px !important;
-      margin-top: 10px !important;
+      margin-top: 6px !important;
       margin-bottom: 10px !important;
       & input{
         background-color: $baseColor !important;
@@ -719,7 +748,7 @@ $btnBg: #DA2327;
         height: 20px !important;
         background: #FFFFFF;
         border: 1px solid #D9D9D9;
-        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.08);
+        // box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.08);
         border-radius: 2px;
       }
       & span{
@@ -728,7 +757,7 @@ $btnBg: #DA2327;
       & label{
         margin: 0 !important;
         font-size: 1rem !important;
-        margin-top: 4px !important;
+        // margin-top: 4px !important;
         cursor: pointer;
       }
     }
@@ -749,7 +778,7 @@ $btnBg: #DA2327;
   &__error{
       color: $errorColor !important;
       font-size: 14px;
-      margin-top: 12px;
+      margin-top: 8px;
   }
 
   &__payment-methods{
@@ -886,4 +915,39 @@ input[type=number].hide-arrows::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number].hide-arrows {
   -moz-appearance: textfield;
+}
+
+.clear-signature{
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 650px) {
+  .sprogress-bar__step:not(.sprogress-bar__step--active){
+    display: none !important;
+  }
+  .sprogress-bar__step.sprogress-bar__step--complete.sprogress-bar__step--active{
+    display: none !important;
+
+  }
+  .sprogress-bar__step::before{
+    left: 0% !important;
+  }
+  .sprogress-bar__step:last-child::before{
+    content: "" !important;
+  }
+
+  .sprogress-bar__step.sprogress-bar__step--active:not(.is-first):not(.is-last)::before{
+    background: linear-gradient(90deg, #20CE44 50%, #ddd 50%) !important;
+  }
+  .sprogress-bar__step.sprogress-bar__step--active.is-last::before{
+    width: 50% !important;
+    background-color: #20CE44 !important;
+  }
+
+  .sprogress-bar__step.sprogress-bar__step--active.is-first::before{
+    left: 50% !important;
+    width: 50% !important;
+  }
 }

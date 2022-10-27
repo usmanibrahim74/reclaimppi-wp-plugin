@@ -22,10 +22,17 @@ export default function Reusable(){
     function arrayIntersection(array1, array2){
       return array1.filter(k => array2.includes(k))
     }
+
+    function range(start=0, step=1, end=10){
+
+      const arrayLength = Math.floor(((end - start) / step)) + 1;
+      return [...Array(arrayLength).keys()].map(x => (x * step) + start);
+    }
     return {
         filterEmptyKeys,
         hasSome,
         hasEvery,
         arrayIntersection,
+        range,
     }
 }

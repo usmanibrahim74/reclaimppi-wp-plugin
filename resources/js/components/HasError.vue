@@ -1,6 +1,6 @@
 <template>
     <!-- eslint-disable vue/no-v-html -->
-    <div v-if="errors.includes(field)" class="swizard__error" v-html="message" />
+    <div v-if="errors.includes(field)" class="swizard__error" v-html="getMessage" />
     <!--eslint-enable-->
   </template>
   
@@ -19,8 +19,13 @@
       },
       message: {
           type: String,
-          default: "The above field is required."
+          default: null
       }
     },
+    computed:{
+      getMessage(){
+        return this.message ? this.message : "The above field is required."
+      }
+    }
   }
   </script>
