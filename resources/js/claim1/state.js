@@ -4,7 +4,7 @@ const year = { year_1: null, year_2: null,year_3: null, year_4: null}
 const name = { title: null, first_name: null,last_name: null}
 const dob = { day: null, month: null,year: null}
 export default reactive({
-    url: "/index.php/ReclaimPPI/lead",
+    url: "/ReclaimPPI/lead",
     step: 1,
     showAssesmentModal: false,
     showYearsInfoModal: false,
