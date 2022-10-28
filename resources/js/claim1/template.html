@@ -34,7 +34,7 @@
         <div class="swizard__title">
           <p class="swizard__title__p">
             Please provide us with the TOTAL amount you received for your PPI
-            refunds in the relevant tax years below
+            refunds in the relevant tax years below:
           </p>
         </div>
 
@@ -54,7 +54,7 @@
         </div>
 
         <radio-question
-          question="Were you earning less than £50,000.00 a year at the time you received your PPI refund?"
+          question="Were you earning less than £50,000 a year at the time you received your PPI refund?"
           field="less_earning" :errors="state.errors">
           <radio-box name="less_earning" v-model="state.form[0].less_earning" :value="true" label="Yes" />
           <radio-box name="less_earning" v-model="state.form[0].less_earning" :value="false" label="No" />
@@ -92,10 +92,10 @@
         </div>
         <HasError field="name" :errors="state.errors" message="The above fields are required" />
 
-        <p style="margin-bottom: 5px;">DOB</p>
+        <p style="margin-bottom: 5px; margin-top: 20px; font-weight: bold;">DOB</p>
         <div class="swizard__about">
           <input-select class="swizard__about__item" label="Day" in-select :options="range(1,1,31)" v-model="state.form[1].day" />
-          <input-select class="swizard__about__item" label="Month" in-select :options="range(1,1,12)" v-model="state.form[1].month" />
+          <input-select class="swizard__about__item" label="Month" in-select :options="options.months" v-model="state.form[1].month" />
           <input-select class="swizard__about__item" label="Year" in-select :options="range(new Date().getFullYear()-100,1,new Date().getFullYear()).reverse()" v-model="state.form[1].year" />
         </div>
         <HasError field="dob" :errors="state.errors" message="The above fields are required" />
@@ -123,7 +123,7 @@
         <input-text label="Postcode" v-model="state.form[2].postcode" />
         <HasError field="postcode" :errors="state.errors" />
 
-        <div class="swizard__sign__checkbox">
+        <div class="swizard__sign__checkbox" style="margin-top: 10px !important;">
           <input id="agreed" type="checkbox" :value="1" v-model="state.form[2].agree" />
           <label for="agreed"><small>I agree for Reclaim My PPI Tax to contact me with regards to
               any tax rebate purposes.</small>

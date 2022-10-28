@@ -315,7 +315,7 @@ $btnBg: #DA2327;
      &__p{
       color: $colorBlack;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
       margin-top: 10px !important;
      }
      &__line {
@@ -328,7 +328,7 @@ $btnBg: #DA2327;
     margin-bottom: 15px !important;
     & p {
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 6px;
     }
     &__items{
@@ -958,4 +958,8 @@ input[type=number].hide-arrows {
     left: 50% !important;
     width: 50% !important;
   }
+}
+
+.swizard__input{
+  font-size: 16px !important;
 }
