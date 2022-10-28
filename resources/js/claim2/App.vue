@@ -4,14 +4,14 @@ import { computed, onMounted, ref} from "vue";
 import axios from "axios";
 import state from "./state";
 import Reusable from "../reuseable";
-import ProgressStep from './../components/ProgressStep.vue';
-import StepTitle from './../components/StepTitle.vue';
-import GreatNews from './../components/GreatNews.vue';
-import RadioBox from "../components/RadioBox.vue";
-import RadioQuestion from "../components/RadioQuestion.vue";
-import AmountBox from "../components/AmountBox.vue";
-import InputText from "../components/InputText.vue";
-import InputSelect from "../components/InputSelect.vue";
+import ProgressStep from './../components/tailwind/ProgressStep.vue';
+import StepTitle from './../components/tailwind/StepTitle.vue';
+import GreatNews from './../components/tailwind/GreatNews.vue';
+import RadioBox from "../components/tailwind/RadioBox.vue";
+import RadioQuestion from "../components/tailwind/RadioQuestion.vue";
+import AmountBox from "../components/tailwind/AmountBox.vue";
+import InputText from "../components/tailwind/InputText.vue";
+import InputSelect from "../components/tailwind/InputSelect.vue";
 
 import options from "./options.json";
 
