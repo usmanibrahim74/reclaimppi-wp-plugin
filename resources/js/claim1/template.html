@@ -123,9 +123,9 @@
         <input-text label="Postcode" v-model="state.form[2].postcode" />
         <HasError field="postcode" :errors="state.errors" />
 
-        <div class="swizard__sign__checkbox">
+        <div class="swizard__sign__checkbox" style="margin-top: 10px !important;">
           <input id="agreed" type="checkbox" :value="1" v-model="state.form[2].agree" />
-          <label for="agreed" style="margin-top: 10px;"><small>I agree for Reclaim My PPI Tax to contact me with regards to
+          <label for="agreed"><small>I agree for Reclaim My PPI Tax to contact me with regards to
               any tax rebate purposes.</small>
           </label>
         </div>
