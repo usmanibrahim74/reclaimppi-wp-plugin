@@ -5,7 +5,7 @@ const name = { title: null, first_name: null,last_name: null}
 const dob = { day: null, month: null,year: null}
 export default reactive({
     url: "/index.php/ReclaimPPI/lead",
-    step: 1,
+    step: 3,
     showAssesmentModal: false,
     showYearsInfoModal: false,
     showNIModal: false,
@@ -40,11 +40,18 @@ export default reactive({
         ...name,
         ...dob,
       },
+      // {
+      //   email: null,
+      //   phone: null,
+      //   address: null,
+      //   postcode: null,
+      //   agree: null,
+      // },
       {
-        email: null,
-        phone: null,
-        address: null,
-        postcode: null,
+        email: 'dyvaj@mailinator.com',
+        phone: '03056230514',
+        address: 'Nisi reprehenderit ',
+        postcode: 'Deserunt non eos di',
         agree: null,
       },
       {

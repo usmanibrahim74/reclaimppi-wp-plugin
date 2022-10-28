@@ -61,6 +61,10 @@ function validate() {
     if(form.phone != null && (form.phone.length != 11 || form.phone.charAt(0) != "0")) {
         errors.push("invalid_phone")
     }
+    if(!form.agree && !errors.includes('agree'))
+    {
+      errors.push('agree');
+    }
   }
   state.errors = [...errors];
   return !state.errors.length;
@@ -68,12 +72,19 @@ function validate() {
 
 function stepForward() {
   if (validate() && state.step >= 1 && state.step <= 4) {
+  
     state.step++;
+    scrollUp()
   }
 }
 function stepBack() {
-  console.log('back');
-  if (state.step > 1 && state.step <= 4) state.step--;
+  if (state.step > 1 && state.step <= 4){
+    state.step--;
+    scrollUp()
+  } 
+}
+function scrollUp(){
+  document.getElementById('app').scrollIntoView();
 }
 function clearSignature(){
   signaturePad.value.clearSignature();

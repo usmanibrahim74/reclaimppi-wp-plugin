@@ -9,7 +9,7 @@
         <p class="smodal__body__p">{{ props.text }}</p>
       </div>
       <div class="smodal__footer">
-        <button @click="$emit('close')" class="smodal__footer__btn">close</button>
+        <button @click="$emit('close')" class="smodal__footer__btn">Close</button>
       </div>
 </template>
 
