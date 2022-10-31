@@ -9,7 +9,7 @@
             @input="$emit('update:modelValue', $event.target.value)"
             class="swizard__years__items__item__box hide-arrows"
         />
-        <span class="swizard__years__items__item__right-icon" @click="$emit('icon:click')"
+        <span class="swizard__years__items__item__right-icon" @mouseover="$emit('icon:click')"
             ><IconInfo
         /></span>
         </div>

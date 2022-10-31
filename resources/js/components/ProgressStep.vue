@@ -8,7 +8,7 @@
   >
     <p
       class="sprogress-bar__step__text"
-      :class="{ 'sprogress-bar__step__text--active': props.step > 0 }"
+      :class="{ 'sprogress-bar__step__text--active': props.step <= props.current }"
     >
       {{props.title}}
     </p>
