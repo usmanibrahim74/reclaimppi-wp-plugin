@@ -319,7 +319,9 @@ $btnBg: #DA2327;
       margin-top: 10px !important;
      }
      &__line {
-      border: 1px solid #EDEDED;
+       color: transparent;
+       border: none;
+      border-top: 1px solid #EDEDED;
       margin-bottom: 20px;
      }
   }
@@ -962,4 +964,10 @@ input[type=number].hide-arrows {
 
 .swizard__input{
   font-size: 16px !important;
+}
+
+@media screen and (max-width: 480px) {
+  .smodal .step-title{
+    font-size: 18px !important;
+  }
 }
