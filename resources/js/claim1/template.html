@@ -17,7 +17,7 @@
       </div>
       <div class="swizard__step" v-if="state.step == 1">
         <step-title title="Please enter your PPI Claim details" />
-        <radio-question question="Were you required to complete a Self-Assessment the year you got your PPI refund?"
+        <radio-question style="position: relative; z-index:1;" question="Were you required to complete a Self-Assessment the year you got your PPI refund?"
           field="self_assesment" :errors="state.errors">
           <radio-box name="self_assesment" v-model="state.form[0].self_assesment" :value="true" label="Yes"
             @update:modelValue="selfAssesedClick" />
@@ -31,7 +31,7 @@
           </p>
         </div>
 
-        <div class="swizard__years">
+        <div class="swizard__years" style="position: relative; z-index:2;">
 
           <amount-box v-model="state.form[0].year_1" label="Apr 2018 - Mar 2019"
             :tooltip="state.years_message" />
@@ -46,13 +46,13 @@
           <HasError field="year" :errors="state.errors" message="Please fill at least one record" />
         </div>
 
-        <radio-question
+        <radio-question style="position: relative; z-index:1;"
           question="Were you earning less than £50,000 a year at the time you received your PPI refund?"
           field="less_earning" :errors="state.errors">
           <radio-box name="less_earning" v-model="state.form[0].less_earning" :value="true" label="Yes" />
           <radio-box name="less_earning" v-model="state.form[0].less_earning" :value="false" label="No" />
         </radio-question>
-        <input-text label="National insurance (NI) Number"
+        <input-text style="position: relative; z-index:2;" label="National insurance (NI) Number"
           v-model="state.form[0].ni_number" >
           <span class="swizard__input__item__right-icon ni-number">
             <div class="tooltip">
