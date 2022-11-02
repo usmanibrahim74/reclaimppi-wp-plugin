@@ -3,22 +3,15 @@
     v-model="state.showAssesmentModal">
     <ModalMarkup title="Warning!!!" :text="state.self_assesment_message" @close="close" />
   </vue-final-modal>
-  <vue-final-modal v-slot="{ close }" classes="smodal__container" content-class="smodal__content"
-    v-model="state.showYearsInfoModal">
-    <ModalMarkup title="Info!" :text="state.years_message" @close="close" />
-  </vue-final-modal>
-  <vue-final-modal v-slot="{ close }" classes="smodal__container" content-class="smodal__content"
-    v-model="state.showNIModal">
-    <ModalMarkup title="Info!" :text="state.ni_message" @close="close" />
-  </vue-final-modal>
+
   <div class="smodal__body">
     <div class="swizard">
       <div class="sprogress-bar">
         <progress-step :class="{
           'is-last': state.steps.length== i+1,
           'is-first': i == 0
-        }" 
-        
+        }"
+
         v-for="(s,i) in state.steps" :key="i" :title="s.title" :number="s.number" :step="i+1"
           :current="state.step" />
       </div>
@@ -41,13 +34,13 @@
         <div class="swizard__years">
 
           <amount-box v-model="state.form[0].year_1" label="Apr 2018 - Mar 2019"
-            @icon:click="state.showYearsInfoModal = true" />
+            :tooltip="state.years_message" />
           <amount-box v-model="state.form[0].year_2" label="Apr 2019 - Mar 2020"
-            @icon:click="state.showYearsInfoModal = true" />
+            :tooltip="state.years_message" />
           <amount-box v-model="state.form[0].year_3" label="Apr 2020 - Mar 2021"
-            @icon:click="state.showYearsInfoModal = true" />
+            :tooltip="state.years_message" />
           <amount-box v-model="state.form[0].year_4" label="Apr 2021 - Mar 2022"
-            @icon:click="state.showYearsInfoModal = true" />
+            :tooltip="state.years_message" />
 
 
           <HasError field="year" :errors="state.errors" message="Please fill at least one record" />
@@ -62,7 +55,13 @@
         <input-text label="National insurance (NI) Number"
           v-model="state.form[0].ni_number" >
           <span class="swizard__input__item__right-icon ni-number">
-              <IconInfo  @mouseover="state.showNIModal = true"/>
+            <div class="tooltip">
+                <IconInfo />
+                <div class="top">
+                    <p>{{ state.ni_message }}</p>
+                    <i></i>
+                </div>
+            </div>
           </span>
         </input-text>
 
@@ -73,7 +72,7 @@
           <label for="cant_remember">Can't remember (Provide it later)
           </label>
         </div>
-        
+
 
         <div class="swizard__submit" v-if="!state.form[0].self_assesment">
           <NextButton text="Continue" @click="stepForward" />
@@ -103,7 +102,7 @@
         <div class="swizard__submit">
           <NextButton text="Continue" @click="stepForward" />
           <BackButton text="Back" @click="stepBack" />
-          
+
         </div>
       </div>
       <div class="swizard__step" v-if="state.step == 3">
