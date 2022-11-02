@@ -1,7 +1,8 @@
 <template>
     <div class="w-full relative">
         <div
-            class="absolute left-1/2 -top-10 -translate-x-1/2 text-center text-green-400"
+            class="absolute left-1/2 -top-10 -translate-x-1/2 text-center w-full"
+            :class="[current >= step ? 'text-green-400': 'text-gray-300']"
         >
             <strong>{{ props.title }}</strong>
         </div>

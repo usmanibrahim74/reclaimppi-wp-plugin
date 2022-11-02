@@ -1,37 +1,50 @@
 <template>
-    <div class="swizard__input">
-            <p v-if="!inSelect">{{ label }}</p>
-        <div class="swizard__input__item">
-            <select @change="$emit('update:modelValue', $event.target.value)" class="swizard__input__item__box select">
-                <option :value="null">{{ props.inSelect ? props.label : "Select" }}</option>
-                <option :selected="props.modelValue == getValue(o)" :value="getValue(o)" v-for="(o,i) in options" :key="i"> {{ getLabel(o) }} </option>
+    <div class="">
+        <question v-if="!inSelect" :text="label" />
+        <div class="relative">
+            <select
+                @change="$emit('update:modelValue', $event.target.value)"
+                class="w-full rounded border-slate-300 bg-select bg-[length:20px_14px]"
+            >
+                <option :value="null">
+                    {{ props.inSelect ? props.label : "Select" }}
+                </option>
+                <option
+                    :selected="props.modelValue == getValue(o)"
+                    :value="getValue(o)"
+                    v-for="(o, i) in options"
+                    :key="i"
+                >
+                    {{ getLabel(o) }}
+                </option>
             </select>
-            <span class="swizard__input__item__right-icon">
-            <IconSelect />
+            <span
+                class="absolute top-1/2 right-2 -translate-x-1/2 -translate-y-1/2"
+            >
             </span>
         </div>
     </div>
 </template>
 <script setup>
+import Question from "./Question.vue";
 
-function getValue(option){
-    return option.value || option
+function getValue(option) {
+    return option.value || option;
 }
-function getLabel(option){
-    return option.label || option
+function getLabel(option) {
+    return option.label || option;
 }
-
 
 const props = defineProps({
-  label: String,
-  options: {
-      type: Array,
-      required: true,
-  },
-  modelValue: String,
-  inSelect: {
-      type: Boolean,
-      default: false
-  }
+    label: String,
+    options: {
+        type: Array,
+        required: true,
+    },
+    modelValue: String,
+    inSelect: {
+        type: Boolean,
+        default: false,
+    },
 });
 </script>

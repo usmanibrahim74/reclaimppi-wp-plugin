@@ -1,18 +1,17 @@
 <template>
-    <div class="swizard__title">
-            <p class="swizard__title__p text-center step-title">
-              {{props.title}}
-            </p>
-            <hr class="swizard__title__line" />
-          </div>
+    <div class="my-4 text-center">
+        <p class="text-xl sm:text-2xl font-bold">{{ props.title }}</p>
+    </div>
+    <div>
+        <hr class="border border-slate-200" />
+    </div>
 </template>
 
 <script setup>
-
 const props = defineProps({
     title: {
         type: String,
-        required: true
-    }
-})
+        required: true,
+    },
+});
 </script>

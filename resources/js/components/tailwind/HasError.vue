@@ -1,9 +1,9 @@
 <template>
     <!-- eslint-disable vue/no-v-html -->
-    <div v-if="errors.includes(field)" class="swizard__error" v-html="getMessage" />
+    <div v-if="errors.includes(field)" class="text-sm text-red-600 mb-2" v-html="getMessage" />
     <!--eslint-enable-->
   </template>
-  
+
   <script>
   export default {
     name: 'HasError',
@@ -12,7 +12,7 @@
         type: Object,
         required: true
       },
-  
+
       field: {
         type: String,
         required: true
