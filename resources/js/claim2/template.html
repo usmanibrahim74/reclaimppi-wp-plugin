@@ -32,10 +32,11 @@
                 <div v-if="state.step == 1">
                     <step-title title="Please enter your PPI Claim details" />
                     <div class="mt-6 mb-4">
-                        <label for="" class="font-semibold"
-                            >Were you required to complete a Self-Assessment the
-                            year you got your PPI refund?</label
-                        >
+                        <question
+                            labelFor=""
+                            text="Were you required to complete a Self-Assessment the
+                        year you got your PPI refund?"
+                        />
                         <div class="flex my-2">
                             <radio-box
                                 name="self_assesment"
@@ -58,9 +59,9 @@
                     </div>
                     <div class="mb-4">
                         <question
-                            class="mb-3"
-                            text="Please provide us with the TOTAL amount you received for
-                        your PPI refunds in the relevant tax years below:"
+                            text="Please provide us with the TOTAL amount you
+                            received for your PPI refunds in the relevant tax
+                            years below:"
                         />
                         <div
                             class="grid sm:grid-cols-2 sm:justify-items-center gap-x-6"
@@ -95,10 +96,10 @@
                         </div>
                     </div>
                     <div class="mt-6 mb-4">
-                        <label for="" class="font-semibold"
-                            >Were you earning less than £50,000 a year at the
-                            time you received your PPI refund?</label
-                        >
+                        <question
+                            text="Were you earning less than £50,000 a year at the
+                            time you received your PPI refund?"
+                        />
                         <div class="flex my-2">
                             <radio-box
                                 name="self_assesment"

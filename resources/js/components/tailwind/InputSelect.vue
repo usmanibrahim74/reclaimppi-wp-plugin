@@ -1,8 +1,9 @@
 <template>
     <div class="">
-        <question v-if="!inSelect" :text="label" />
+        <question v-if="!inSelect" :labelFor="state.uuid" :text="label" />
         <div class="relative">
             <select
+                :id="state.uuid"
                 @change="$emit('update:modelValue', $event.target.value)"
                 class="w-full rounded border-slate-300 bg-select bg-[length:20px_14px]"
             >
@@ -27,6 +28,12 @@
 </template>
 <script setup>
 import Question from "./Question.vue";
+import { reactive } from "@vue/reactivity";
+import { uuid } from "vue-uuid";
+
+let state = reactive({
+    uuid: uuid.v4(),
+});
 
 function getValue(option) {
     return option.value || option;

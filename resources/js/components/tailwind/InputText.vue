@@ -1,10 +1,8 @@
 <template>
     <div class="relative">
-        <label class="inline-block font-medium mb-2" for="ni">
-            {{ label }}
-        </label>
+        <question :labelFor="state.uuid" :text="label" />
         <input
-            id="ni"
+            :id="state.uuid"
             class="w-full pr-9 rounded border-slate-300"
             :type="type"
             :value="modelValue"
@@ -15,6 +13,12 @@
 </template>
 <script setup>
 import Question from "./Question.vue";
+import { reactive } from "@vue/reactivity";
+import { uuid } from "vue-uuid";
+
+let state = reactive({
+    uuid: uuid.v4(),
+});
 const props = defineProps({
     label: {
         type: String,
