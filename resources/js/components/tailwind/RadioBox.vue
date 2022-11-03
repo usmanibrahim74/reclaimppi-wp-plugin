@@ -7,10 +7,7 @@ let state = reactive({
 });
 
 const isChecked = computed(() => {
-    console.log("props.value: ", props.value);
-    let res = props.modelValue == props.value;
-    console.log("isChecked: ", res);
-    return res;
+    return props.modelValue == props.value;
 });
 
 const props = defineProps({
@@ -51,8 +48,8 @@ const props = defineProps({
                 ></div>
             </div>
             <span
-                class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 checked:text-green-600"
-                :class="[isChecked ? 'text-green-600' : 'text-inherit']"
+                class="ml-2 text-md font-medium dark:text-gray-300"
+                :class="[isChecked ? 'text-green-400' : 'text-inherit']"
             >
                 {{ props.label }}
             </span>

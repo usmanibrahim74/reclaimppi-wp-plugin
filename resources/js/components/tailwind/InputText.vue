@@ -1,7 +1,10 @@
 <template>
-    <question :text="label" />
     <div class="relative">
+        <label class="inline-block font-medium mb-2" for="ni">
+            {{ label }}
+        </label>
         <input
+            id="ni"
             class="w-full pr-9 rounded border-slate-300"
             :type="type"
             :value="modelValue"

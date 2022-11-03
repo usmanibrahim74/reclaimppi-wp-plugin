@@ -11,24 +11,6 @@
     />
 </vue-final-modal>
 
-<vue-final-modal
-    v-slot="{ close }"
-    classes="flex justify-center items-center"
-    content-class="relative flex flex-col w-[500px] max-h-full mx-4 border dark:border-gray-800 rounded bg-white dark:bg-gray-900"
-    v-model="state.showYearsInfoModal"
->
-    <ModalMarkup title="Info!" :text="state.years_message" @close="close" />
-</vue-final-modal>
-
-<vue-final-modal
-    v-slot="{ close }"
-    classes="flex justify-center items-center"
-    content-class="relative flex flex-col w-[500px] max-h-full mx-4 border dark:border-gray-800 rounded bg-white dark:bg-gray-900"
-    v-model="state.showNIModal"
->
-    <ModalMarkup title="Info!" :text="state.ni_message" @close="close" />
-</vue-final-modal>
-
 <div class="relative w-[100vw] left-1/2 -translate-x-1/2">
     <div class="max-w-[900px] mx-auto">
         <div class="p-3 mx-auto">
@@ -50,9 +32,10 @@
                 <div v-if="state.step == 1">
                     <step-title title="Please enter your PPI Claim details" />
                     <div class="mt-6 mb-4">
-                        <question
-                            text="Were you required to complete a Self-Assessment the year you got your PPI refund?"
-                        />
+                        <label for="" class="font-semibold"
+                            >Were you required to complete a Self-Assessment the
+                            year you got your PPI refund?</label
+                        >
                         <div class="flex my-2">
                             <radio-box
                                 name="self_assesment"
@@ -85,22 +68,22 @@
                             <amount-box
                                 v-model="state.form[0].year_1"
                                 label="Apr 2018 - Mar 2020"
-                                @icon:click="state.showYearsInfoModal = true"
+                                :tooltip="state.years_message"
                             />
                             <amount-box
                                 v-model="state.form[0].year_2"
                                 label="Apr 2018 - Mar 2019"
-                                @icon:click="state.showYearsInfoModal = true"
+                                :tooltip="state.years_message"
                             />
                             <amount-box
                                 v-model="state.form[0].year_3"
                                 label="Apr 2018 - Mar 2019"
-                                @icon:click="state.showYearsInfoModal = true"
+                                :tooltip="state.years_message"
                             />
                             <amount-box
                                 v-model="state.form[0].year_4"
                                 label="Apr 2018 - Mar 2019"
-                                @icon:click="state.showYearsInfoModal = true"
+                                :tooltip="state.years_message"
                             />
                             <div class="flex justify-start w-full mt-4">
                                 <HasError
@@ -112,10 +95,10 @@
                         </div>
                     </div>
                     <div class="mt-6 mb-4">
-                        <question
-                            text="Were you earning less than £50,000 a year at the
-                    time you received your PPI refund?"
-                        />
+                        <label for="" class="font-semibold"
+                            >Were you earning less than £50,000 a year at the
+                            time you received your PPI refund?</label
+                        >
                         <div class="flex my-2">
                             <radio-box
                                 name="self_assesment"
@@ -139,10 +122,14 @@
                             v-model="state.form[0].ni_number"
                         >
                             <span
-                                class="absolute right-2 top-2 cursor-pointer"
-                                @click="state.showNIModal = true"
+                                class="absolute right-2 top-11 cursor-pointer group duration-300"
                             >
                                 <IconInfo />
+                                <span
+                                    class="absolute hidden group-hover:flex -left-[145px] sm:-left-[285px] -top-4 -translate-y-full sm:w-80 w-44 px-2 py-1 bg-gray-700 rounded-lg text-white text-sm after:content-[''] after:absolute after:right-[2%] after:top-[100%] after:-translate-x-1/2 after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-gray-700"
+                                >
+                                    {{ state.ni_message }}
+                                </span>
                             </span>
                         </input-text>
                         <div class="mt-2">
@@ -159,6 +146,8 @@
                     </div>
                     <div class="flex items-center mt-2 mb-6">
                         <sign-checkbox
+                            v-model="state.form[0].cant_remember"
+                            :value="true"
                             label="Can't remember (Provide it later)"
                         />
                     </div>
@@ -271,7 +260,17 @@
                                 label="Email"
                                 v-model="state.form[2].email"
                             />
-                            <HasError class="mt-1" field="email" :errors="state.errors" />
+                            <HasError
+                                class="mt-1"
+                                field="email"
+                                :errors="state.errors"
+                            />
+                            <HasError
+                                class="mt-1"
+                                field="invalid_email"
+                                :errors="state.errors"
+                                message="Invalid Email"
+                            />
                         </div>
                         <div class="mt-6">
                             <input-text
@@ -279,7 +278,17 @@
                                 label="Phone Number"
                                 v-model="state.form[2].phone"
                             />
-                            <HasError class="mt-1" field="phone" :errors="state.errors" />
+                            <HasError
+                                class="mt-1"
+                                field="phone"
+                                :errors="state.errors"
+                            />
+                            <HasError
+                                class="mt-1"
+                                field="invalid_phone"
+                                :errors="state.errors"
+                                message="Invalid Phone Number"
+                            />
                         </div>
 
                         <div class="mt-6">
@@ -287,22 +296,36 @@
                                 label="Address"
                                 v-model="state.form[2].address"
                             />
-                            <HasError class="mt-1" field="address" :errors="state.errors" />
+                            <HasError
+                                class="mt-1"
+                                field="address"
+                                :errors="state.errors"
+                            />
                         </div>
                         <div class="mt-6">
                             <input-text
                                 label="Postcode"
                                 v-model="state.form[2].postcode"
                             />
-                            <HasError class="mt-1" field="postcode" :errors="state.errors" />
+                            <HasError
+                                class="mt-1"
+                                field="postcode"
+                                :errors="state.errors"
+                            />
                         </div>
                     </div>
                     <div class="flex items-center mt-4 text-sm">
                         <sign-checkbox
+                            v-model="state.form[2].agree"
+                            :value="true"
                             label="I agree for Reclaim My PPI Tax to contact me with regards to any tax rebate purposes."
                         />
                     </div>
-                    <HasError class="mt-2" field="agree" :errors="state.errors" />
+                    <HasError
+                        class="mt-2"
+                        field="agree"
+                        :errors="state.errors"
+                    />
 
                     <div class="flex items-center justify-center flex-col mt-7">
                         <NextButton text="Continue" @click="stepForward" />
@@ -311,27 +334,47 @@
                 </div>
 
                 <div class="" v-if="state.step == 4">
-
                     <great-news />
 
-                    <input-text label="Do you have a referral code? (optional)" v-model="state.form[3].referal_code" />
+                    <input-text
+                        label="Do you have a referral code? (optional)"
+                        v-model="state.form[3].referal_code"
+                    />
 
                     <div class="mt-6 mb-1">
-                      <p class="mb-1">Please draw your signature below in the green box.</p>
-                      <div class="">
-                        <VueSignaturePad class="w-full bg-white border border-green-500 rounded"
-                          ref="signaturePad" />
-                        <HasError class="mt-2" field="signature" :errors="state.errors" message="Signature required" />
-                      </div>
+                        <p class="mb-1">
+                            Please draw your signature below in the green box.
+                        </p>
+                        <div class="">
+                            <VueSignaturePad
+                                class="w-full bg-white border border-green-500 rounded"
+                                ref="signaturePad"
+                            />
+                            <HasError
+                                class="mt-2"
+                                field="signature"
+                                :errors="state.errors"
+                                message="Signature required"
+                            />
+                        </div>
                     </div>
 
-                    <small class="font-bold cursor-pointer" @click="clearSignature">Clear Signature</small>
+                    <small
+                        class="font-bold cursor-pointer"
+                        @click="clearSignature"
+                        >Clear Signature</small
+                    >
 
                     <div class="flex items-center justify-center flex-col mt-8">
-                      <NextButton :disabled="state.loading" no-icon :text="state.loading? 'Please Wait ---': 'Start Your Claim'" @click="submit" />
-                      <BackButton text="Back" @click="stepBack" />
+                        <NextButton
+                            :disabled="state.loading"
+                            no-icon
+                            :text="state.loading? 'Please Wait ---': 'Start Your Claim'"
+                            @click="submit"
+                        />
+                        <BackButton text="Back" @click="stepBack" />
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>

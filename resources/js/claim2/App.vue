@@ -63,6 +63,10 @@ function validate() {
     if(form.phone != null && (form.phone.length != 11 || form.phone.charAt(0) != "0")) {
         errors.push("invalid_phone")
     }
+    if(!form.agree && !errors.includes('agree'))
+    {
+      errors.push('agree');
+    }
   }
   state.errors = [...errors];
   return !state.errors.length;
@@ -74,7 +78,6 @@ function stepForward() {
   }
 }
 function stepBack() {
-  console.log('back');
   if (state.step > 1 && state.step <= 4) state.step--;
 }
 function clearSignature(){
@@ -101,3 +104,9 @@ async function submit() {
 </script>
 
   <template src="./template.html"></template>
+<style>
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    }
+</style>
