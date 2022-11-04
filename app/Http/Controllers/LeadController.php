@@ -35,6 +35,7 @@ class LeadController extends Controller
     $year_4 = $request->year_4;
     $signature = $request->signature;
     $earningLevel = $request->less_earning?4:3;
+    $ni_number = $request->ni_number;
 
     $years = [];
     if ($year_1) {
@@ -71,7 +72,7 @@ class LeadController extends Controller
     $post_data = [
       "claimID" => 0,
       "type"  => 1,
-      "referalCode" => "{$referal_code}",
+      "referralCode" => "{$referal_code}",
       "company" => 1,
       "source" => "Google",
       "customerSource" => "Website",
@@ -86,7 +87,8 @@ class LeadController extends Controller
           "dob" => "{$dob}",
           "address1" => "{$streat_address}",
           "postcode" => "{$postal_code}",
-          "earningLevel" => $earningLevel
+          "earningLevel" => $earningLevel,
+          "ni" => $ni_number
         ]
       ],
       "years" => $years,
