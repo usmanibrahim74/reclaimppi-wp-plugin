@@ -15,7 +15,7 @@
         v-for="(s,i) in state.steps" :key="i" :title="s.title" :number="s.number" :step="i+1"
           :current="state.step" />
       </div>
-      <div class="swizard__step" v-if="state.step == 1">
+      <div class="swizard__step swizard_page1" v-if="state.step == 1">
         <step-title title="Please enter your PPI Claim details" />
         <radio-question style="position: relative; z-index:1;" question="Were you required to complete a Self-Assessment the year you got your PPI refund?"
           field="self_assesment" :errors="state.errors">
@@ -80,7 +80,7 @@
         <HasError v-else style="text-align: center;" field="already_assessed" :errors="['already_assessed']"
           :message="state.self_assesment_message" />
       </div>
-      <div class="swizard__step" v-if="state.step == 2">
+      <div class="swizard__step swizard_page2" v-if="state.step == 2">
 
         <step-title title="Please complete your details below to start your claim" />
 
@@ -105,7 +105,7 @@
 
         </div>
       </div>
-      <div class="swizard__step" v-if="state.step == 3">
+      <div class="swizard__step swizard_page3" v-if="state.step == 3">
         <step-title title="Enter your contact details to claim your tax back" />
         <input-text type="email" label="Email" v-model="state.form[2].email" />
         <HasError field="email" :errors="state.errors" />
@@ -136,7 +136,7 @@
         </div>
       </div>
 
-      <div class="swizard__step" v-if="state.step == 4">
+      <div class="swizard__step swizard_page4" v-if="state.step == 4">
         <great-news />
         <input-text label="Do you have a referral code? (optional)" v-model="state.form[3].referal_code" />
 

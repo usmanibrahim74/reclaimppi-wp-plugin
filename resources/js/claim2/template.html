@@ -29,7 +29,7 @@
             <div
                 class="max-w-[700px] mx-auto mt-20 bg-orange-50 py-5 px-5 lg:px-7 box-border"
             >
-                <div v-if="state.step == 1">
+                <div class="swizard_page1" v-if="state.step == 1">
                     <step-title title="Please enter your PPI Claim details" />
                     <div class="mt-6 mb-4">
                         <question
@@ -168,7 +168,7 @@
                     </div>
                 </div>
 
-                <div v-if="state.step == 2">
+                <div class="swizard_page2" v-if="state.step == 2">
                     <step-title
                         title="Please complete your details below to start your claim"
                     />
@@ -250,7 +250,7 @@
                     </div>
                 </div>
 
-                <div class="" v-if="state.step == 3">
+                <div class="swizard_page3" v-if="state.step == 3">
                     <step-title
                         title="Enter your contact details to claim your tax back"
                     />
@@ -334,7 +334,7 @@
                     </div>
                 </div>
 
-                <div class="" v-if="state.step == 4">
+                <div class="swizard_page4" v-if="state.step == 4">
                     <great-news />
 
                     <input-text
