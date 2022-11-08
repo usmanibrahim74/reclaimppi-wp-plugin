@@ -276,6 +276,9 @@ $btnBg: #DA2327;
   &--active{
     background-color: $btnBg !important;
     color: $baseColor !important;
+    &:disabled{
+      opacity: 0.65;
+    }
   }
   &__reset{
     margin-right: 10px !important;

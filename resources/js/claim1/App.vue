@@ -104,8 +104,8 @@ async function submit() {
     ...state.form[3],
   };
   const response = await axios.post(state.url, form);
-  console.log(response);
-  state.loading = false
+  // console.log(response);
+  // state.loading = false
   window.location.href = '/thank-you?reference='+response.data.claimID
 }
 </script>
