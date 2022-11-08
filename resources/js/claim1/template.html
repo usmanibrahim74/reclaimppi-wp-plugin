@@ -152,7 +152,7 @@
         <small class="clear-signature" @click="clearSignature">Clear Signature</small>
 
         <div class="swizard__submit">
-          <NextButton :disabled="state.loading" no-icon :text="state.loading? 'Please Wait ---': 'Start Your Claim'" @click="submit" />
+          <NextButton :disabled="state.loading" no-icon :text="state.loading? 'Please Wait ---': 'Start Your Claim'" @click.once="submit" />
           <BackButton text="Back" @click="stepBack" />
         </div>
       </div>
