@@ -71,6 +71,7 @@ function validate() {
 }
 
 function stepForward() {
+  // console.log(state.form);
   if (validate() && state.step >= 1 && state.step <= 4) {
   
     state.step++;
