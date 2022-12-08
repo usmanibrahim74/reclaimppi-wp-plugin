@@ -1,0 +1,178 @@
+<div class="smodal">
+  <vue-final-modal v-slot="{ close }" classes="smodal__container" content-class="smodal__content"
+    v-model="state.showAssesmentModal">
+    <ModalMarkup title="Warning!!!" :text="state.self_assesment_message" @close="close" />
+  </vue-final-modal>
+
+  <div class="smodal__body">
+    <div class="swizard">
+      <div class="sprogress-bar">
+        <progress-step :class="{
+          'is-last': state.steps.length== i+1,
+          'is-first': i == 0
+        }"
+
+        v-for="(s,i) in state.steps" :key="i" :title="s.title" :number="s.number" :step="i+1"
+          :current="state.step" />
+      </div>
+      <div class="swizard__step swizard_page1" v-if="state.step == 1">
+        <step-title title="Is the below statement true?" />
+        <div class="swizard__title">
+          <p class="swizard__title__p">
+            I was NOT self employed the year I received my PPI refund.
+          </p>
+        </div>
+
+        <div class="centered-btns">
+          <button type="button" class="sbutton sbutton__primary sbutton__outline" @click="criteriaFailed">
+            Yes 
+          </button>
+          <button type="button" class="sbutton sbutton__primary" @click="stepForward">
+            No 
+          </button>
+        </div>
+      </div>
+      <div class="swizard__step swizard_page1" v-if="state.step == 2">
+        <step-title title="Please enter your PPI Claim details" />
+        <radio-question style="position: relative; z-index:1;" question="Were you required to complete a Self-Assessment the year you got your PPI refund?"
+          field="self_assesment" :errors="state.errors">
+          <radio-box name="self_assesment" v-model="state.form[0].self_assesment" :value="true" label="Yes"
+            @update:modelValue="selfAssesedClick" />
+          <radio-box name="self_assesment" v-model="state.form[0].self_assesment" :value="false" label="No" />
+        </radio-question>
+
+        <div class="swizard__title">
+          <p class="swizard__title__p">
+            Please provide us with the TOTAL amount you received for your PPI
+            refunds in the relevant tax years below:
+          </p>
+        </div>
+
+        <div class="swizard__years" style="position: relative; z-index:2;">
+
+          <amount-box v-model="state.form[0].year_1" label="Apr 2018 - Mar 2019"
+            :tooltip="state.years_message" />
+          <amount-box v-model="state.form[0].year_2" label="Apr 2019 - Mar 2020"
+            :tooltip="state.years_message" />
+          <amount-box v-model="state.form[0].year_3" label="Apr 2020 - Mar 2021"
+            :tooltip="state.years_message" />
+          <amount-box v-model="state.form[0].year_4" label="Apr 2021 - Mar 2022"
+            :tooltip="state.years_message" />
+
+
+          <HasError field="year" :errors="state.errors" message="Please fill at least one record" />
+        </div>
+
+        <radio-question style="position: relative; z-index:1;"
+          question="Were you earning less than £50,000 a year at the time you received your PPI refund?"
+          field="less_earning" :errors="state.errors">
+          <radio-box name="less_earning" v-model="state.form[0].less_earning" :value="true" label="Yes" />
+          <radio-box name="less_earning" v-model="state.form[0].less_earning" :value="false" label="No" />
+        </radio-question>
+        <input-text style="position: relative; z-index:2;" label="National insurance (NI) Number"
+          v-model="state.form[0].ni_number" >
+          <span class="swizard__input__item__right-icon ni-number">
+            <div class="tooltip">
+                <IconInfo />
+                <div class="top">
+                    <p>{{ state.ni_message }}</p>
+                    <i></i>
+                </div>
+            </div>
+          </span>
+        </input-text>
+
+        <HasError field="invalid_ni" :errors="state.errors" message="Invalid NI Number" />
+        <HasError field="ni_number" :errors="state.errors"/>
+        <div class="swizard__sign__checkbox">
+          <input id="cant_remember" :disabled="niCheckDisabled" type="checkbox" :value="true" v-model="state.form[0].cant_remember" />
+          <label for="cant_remember">Can't remember (Provide it later)
+          </label>
+        </div>
+
+
+        <div class="swizard__submit" v-if="!state.form[0].self_assesment">
+          <NextButton text="Continue" @click="stepForward" />
+        </div>
+        <HasError v-else style="text-align: center;" field="already_assessed" :errors="['already_assessed']"
+          :message="state.self_assesment_message" />
+      </div>
+      <div class="swizard__step swizard_page2" v-if="state.step == 3">
+
+        <step-title title="Please complete your details below to start your claim" />
+
+        <div class="swizard__about">
+          <input-select class="swizard__about__item" label="Title" :options="options.title" v-model="state.form[1].title" />
+          <input-text class="swizard__about__item" label="First Name" v-model="state.form[1].first_name" />
+          <input-text class="swizard__about__item" label="Last Name" v-model="state.form[1].last_name" />
+        </div>
+        <HasError field="name" :errors="state.errors" message="The above fields are required" />
+
+        <p style="margin-bottom: 5px; margin-top: 20px; font-weight: bold;">DOB</p>
+        <div class="swizard__about">
+          <input-select class="swizard__about__item" label="Day" in-select :options="range(1,1,31)" v-model="state.form[1].day" />
+          <input-select class="swizard__about__item" label="Month" in-select :options="options.months" v-model="state.form[1].month" />
+          <input-select class="swizard__about__item" label="Year" in-select :options="range(new Date().getFullYear()-100,1,new Date().getFullYear()).reverse()" v-model="state.form[1].year" />
+        </div>
+        <HasError field="dob" :errors="state.errors" message="The above fields are required" />
+
+        <div class="swizard__submit">
+          <NextButton text="Continue" @click="stepForward" />
+          <BackButton text="Back" @click="stepBack" />
+
+        </div>
+      </div>
+      <div class="swizard__step swizard_page3" v-if="state.step == 4">
+        <step-title title="Enter your contact details to claim your tax back" />
+        <input-text type="email" label="Email" v-model="state.form[2].email" />
+        <HasError field="email" :errors="state.errors" />
+        <HasError field="invalid_email" :errors="state.errors" message="Invalid Email" />
+
+        <input-text type="tel" label="Phone Number" v-model="state.form[2].phone" />
+        <HasError field="phone" :errors="state.errors" />
+        <HasError field="invalid_phone" :errors="state.errors" message="Invalid Phone Number" />
+
+
+        <input-text label="Address" v-model="state.form[2].address" />
+        <HasError field="address" :errors="state.errors" />
+
+        <input-text label="Postcode" v-model="state.form[2].postcode" />
+        <HasError field="postcode" :errors="state.errors" />
+
+        <div class="swizard__sign__checkbox" style="margin-top: 10px !important;">
+          <input id="agreed" type="checkbox" :value="1" v-model="state.form[2].agree" />
+          <label for="agreed"><small>I agree for Reclaim My PPI Tax to contact me with regards to
+              any tax rebate purposes.</small>
+          </label>
+        </div>
+        <HasError field="agree" :errors="state.errors" />
+
+        <div class="swizard__submit">
+          <NextButton text="Continue" @click="stepForward" />
+          <BackButton text="Back" @click="stepBack" />
+        </div>
+      </div>
+
+      <div class="swizard__step swizard_page4" v-if="state.step == 4">
+        <great-news />
+        <input-text label="Do you have a referral code? (optional)" v-model="state.form[3].referal_code" />
+
+        <div class="swizard__input">
+          <p>Please draw your signature below in the green box.</p>
+          <div class="swizard__input__item">
+            <VueSignaturePad width="100%" height="200px" style="border: 1px solid green; background-color: white"
+              ref="signaturePad" />
+            <HasError field="signature" :errors="state.errors" message="Signature required" />
+          </div>
+        </div>
+
+        <small class="clear-signature" @click="clearSignature">Clear Signature</small>
+
+        <div class="swizard__submit">
+          <NextButton :disabled="state.loading" no-icon :text="state.loading? 'Please Wait ---': 'Start Your Claim'" @click.once="submit" />
+          <BackButton text="Back" @click="stepBack" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
