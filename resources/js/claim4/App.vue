@@ -4,6 +4,7 @@ import { computed, onMounted, ref} from "vue";
 import axios from "axios";
 import state from "./state";
 import Reusable from "../reuseable";
+import Criteria from "./steps/criteria.vue";
 import Claim from "./steps/claim.vue";
 import About from "./steps/about.vue";
 import Contact from "./steps/contact.vue";

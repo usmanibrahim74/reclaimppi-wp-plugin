@@ -6,6 +6,7 @@
             class="w-full pr-9 rounded border-slate-300"
             :type="type"
             :value="modelValue"
+            :disabled="disabled"
             @input="$emit('update:modelValue', $event.target.value)"
         />
         <slot></slot>
@@ -32,5 +33,9 @@ const props = defineProps({
         type: String,
         default: "",
     },
+    disabled:{
+        type:Boolean,
+        default:false,
+    }
 });
 </script>

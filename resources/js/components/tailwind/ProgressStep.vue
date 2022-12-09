@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full relative" :class="[active ? '' : 'hidden md:block']">
+  <div class="w-full relative group" :class="[active ? '' : 'hidden md:block']">
     <div
       class="absolute left-1/2 -top-10 -translate-x-1/2 text-center w-full"
       :class="[active || completed ? 'text-green-400' : 'text-gray-300']"
@@ -47,9 +47,9 @@
       </template>
     </div>
     <div
-      class="w-full left-1/2 absolute top-1/2 -translate-y-1/2 right-0 h-1"
+      class="w-full group-last:left-0 group-last:w-1/2 md:group-last:hidden left-0 group-first:left-1/2 md:left-1/2 absolute top-1/2 -translate-y-1/2 right-0 h-1"
       :class="[completed ? 'bg-green-400' : 'bg-gray-300']"
-      v-if="!isLast"
+      
     ></div>
   </div>
 </template>

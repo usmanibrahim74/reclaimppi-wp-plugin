@@ -55,7 +55,7 @@ export default reactive({
       //   agree: null,
       // },
       {
-        referal_code: null,
+        referral_code: null,
         signature: null,
       },
     ],
