@@ -1,7 +1,7 @@
 <template>
     <button
         type="button"
-        class="bg-red-600 font-medium text-white flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
+        class="bg-red-600 border-2 border-solid font-medium text-white flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
     >
         {{ text }}
         <span class="ml-4 mt-1">
