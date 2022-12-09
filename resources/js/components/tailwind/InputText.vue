@@ -3,7 +3,7 @@
         <question :labelFor="state.uuid" :text="label" />
         <input
             :id="state.uuid"
-            class="w-full pr-9 rounded border-slate-300 border-1 bg-white"
+            class="w-full pr-9 rounded border-slate-300 border bg-white"
             :type="type"
             :value="modelValue"
             :disabled="disabled"

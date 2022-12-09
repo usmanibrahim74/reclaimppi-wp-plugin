@@ -10,7 +10,7 @@
             >
             <input
                 :id="state.uuid"
-                class="border-slate-300 border-1 bg-white leading-normal py-3 pl-16 pr-10 rounded w-full"
+                class="border-slate-300 border bg-white leading-normal py-3 pl-16 pr-10 rounded w-full"
                 type="number"
                 :value="modelValue"
                 @input="$emit('update:modelValue', $event.target.value)"
