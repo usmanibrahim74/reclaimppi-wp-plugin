@@ -9,14 +9,14 @@
       <div class="flex gap-5 justify-center mt-6">
         <button
           type="button"
-          class="border-red-600 border-2 font-medium text-red-600 flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
+          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
         >
             Yes
         </button>
 
         <button @click="$emit('forward')"
           type="button"
-          class="bg-red-600 border-red-600 border-2 font-medium text-white flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
+          class="bg-red-600 border-solid border-red-600 border-2 font-medium text-white flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
         >
             No
         </button>
