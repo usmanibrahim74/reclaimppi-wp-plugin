@@ -1,4 +1,16 @@
 <template lang="">
+    <vue-final-modal
+            v-slot="{ close }"
+            classes="flex justify-center items-center"
+            content-class="relative flex flex-col w-[500px] max-h-full mx-4 border dark:border-gray-800 rounded bg-white dark:bg-gray-900"
+            v-model="state.showAssessmentModal"
+        >
+        <ModalMarkup
+            title="Warning!!!"
+            :text="messages.self_assessment"
+            @close="close"
+        />
+    </vue-final-modal>
     <step-title title="Is the below statement true?" />
     <div class="mt-6 mb-4">
       <question
@@ -9,14 +21,15 @@
       <div class="flex gap-5 justify-center mt-6">
         <button
           type="button"
-          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
+          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-3 px-10 sm:py-4 sm:px-20 rounded"
+          @click="failed"
         >
             Yes
         </button>
 
-        <button @click="$emit('forward')"
+        <button @click="passed"
           type="button"
-          class="bg-red-600 border-solid border-red-600 border-2 font-medium text-white flex items-center justify-center py-3 px-6 sm:py-4 sm:px-20 rounded"
+          class="bg-red-600 border-solid border-red-600 border-2 font-medium text-white flex items-center justify-center py-3 px-10 sm:py-4 sm:px-20 rounded"
         >
             No
         </button>
@@ -26,11 +39,13 @@
 <script setup>
 import { computed, reactive } from "vue";
 
+import {messages} from "./../options.json";
 import Reusable from "../../reuseable";
 const { filterEmptyKeys, arrayIntersection } = Reusable();
 let state = reactive({
-  required: [],
+  required: ["self_assessment"],
   errors: [],
+  showAssessmentModal: false,
 });
 const props = defineProps({
   modelValue: {
@@ -39,7 +54,6 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["update:modelValue", "forward"]);
 const form = computed({
   get() {
     return props.modelValue;
@@ -48,30 +62,32 @@ const form = computed({
     emit("update:modelValue", value);
   },
 });
+const emit = defineEmits(["update:modelValue", "forward"]);
+
 function validate() {
   const form = props.modelValue;
   let required = Object.values(state.required);
   const empty_keys = filterEmptyKeys(form);
   let errors = arrayIntersection(empty_keys, required);
 
-  var re = /\S+@\S+\.\S+/;
-  if (form.email != null && !re.test(form.email)) {
-    errors.push("invalid_email");
-  }
-  if (
-    form.phone != null &&
-    (form.phone.length != 11 || form.phone.charAt(0) != "0")
-  ) {
-    errors.push("invalid_phone");
-  }
-  if (!form.agree && !errors.includes("agree")) {
-    errors.push("agree");
-  }
-
+  
+  // form.self_assessment && errors.push("already_assessed");
+  
+  
   state.errors = [...errors];
+  
   return !state.errors.length;
 }
+function passed(){
+  form.self_assessment = false ;
+  next()
+}
+function failed(){
+  form.self_assessment = true;
+  state.showAssessmentModal = true;
+}
 function next() {
-  validate() && emit("forward");
+  emit("forward");
+  // validate() && emit("forward");
 }
 </script>

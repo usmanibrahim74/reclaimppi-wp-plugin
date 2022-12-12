@@ -1,7 +1,7 @@
 <template>
   <div class="w-full relative group" :class="[active ? '' : 'hidden md:block']">
     <div
-      class="absolute left-1/2 -top-10 -translate-x-1/2 text-center w-full"
+      class="absolute left-1/2 -top-10 -translate-x-1/2 text-center w-full font-medium"
       :class="[active || completed ? 'text-green-400' : 'text-gray-300']"
     >
       <strong>{{ props.title }}</strong>

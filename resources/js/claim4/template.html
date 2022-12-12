@@ -8,27 +8,27 @@
 
             <div class="max-w-[700px] mx-auto mt-20 bg-orange-50 py-5 px-5 lg:px-7 box-border">
                 <div class="swizard_page1" v-if="state.step == 1">
-                    <Criteria @forward="stepForward" />
+                    <Criteria v-model="state.form[0]" @forward="stepForward" />
                 </div>
                 <div class="swizard_page1" v-if="state.step == 2">
-                    <Claim v-model="state.form[0]"
+                    <Claim v-model="state.form[1]"
                         @forward="stepForward" />
                 </div>
                     
                 <div class="swizard_page2" v-if="state.step == 3">
                         
-                    <About v-model="state.form[1]"
+                    <About v-model="state.form[2]"
                         @forward="stepForward" @backward="stepBack" />
                     
                 </div>
 
                 <div class="swizard_page3" v-if="state.step == 4">
-                    <Contact v-model="state.form[2]"
+                    <Contact v-model="state.form[3]"
                         @forward="stepForward" @backward="stepBack" />
                 </div>
 
                 <div class="swizard_page4" v-if="state.step == 5">
-                    <StartClaim v-model="state.form[3]"
+                    <StartClaim v-model="state.form[4]"
                         @forward="submit" @backward="stepBack" :loading="state.loading" />
                 </div>
             </div>

@@ -1,45 +1,9 @@
 <template lang="">
-    <vue-final-modal
-        v-slot="{ close }"
-        classes="flex justify-center items-center"
-        content-class="relative flex flex-col w-[500px] max-h-full mx-4 border dark:border-gray-800 rounded bg-white dark:bg-gray-900"
-        v-model="state.showAssessmentModal"
-    >
-        <ModalMarkup
-            title="Warning!!!"
-            :text="messages.self_assessment"
-            @close="close"
-        />
-    </vue-final-modal>
+    
     <step-title title="Please enter your PPI Claim details" />
     <template v-if="form">
+        
         <div class="mt-6 mb-4">
-            <question
-                labelFor=""
-                text="Were you required to complete a Self-Assessment the
-            year you got your PPI refund?"
-            />
-            <div class="flex my-2">
-                <radio-box
-                    name="self_assessment"
-                    v-model="form.self_assessment"
-                    :value="true"
-                    label="Yes"
-                    @update:modelValue="selfAssessedClick"
-                />
-                <radio-box
-                    name="self_assessment"
-                    v-model="form.self_assessment"
-                    :value="false"
-                    label="No"
-                />
-            </div>
-            <HasError
-                field="self_assessment"
-                :errors="state.errors"
-            />
-        </div>
-        <div class="mb-4">
             <question
                 text="Please provide us with the TOTAL amount you
                 received for your PPI refunds in the relevant tax
@@ -138,15 +102,7 @@
         <div class="flex items-center justify-center">
             <NextButton
                 text="Continue"
-                v-if="!form.self_assessment"
                 @click="next"
-            />
-            <HasError
-                v-else
-                class="text-center"
-                field="already_assessed"
-                :errors="['already_assessed']"
-                :message="messages.self_assessment"
             />
         </div>
     </template>
@@ -162,7 +118,7 @@ import {years, messages} from "./../options.json";
 
 let state = reactive({
   showAssessmentModal: false,
-  required: ["self_assessment", "years", "less_earning", "ni_number"],
+  required: [ "years", "less_earning", "ni_number"],
   errors: []
 });
 const emit = defineEmits(["update:modelValue", "forward"]);
@@ -175,7 +131,6 @@ const props = defineProps({
 
 const form = computed({
   get() {
-    console.log(props);
     return props.modelValue;
   },
   set(value) {
@@ -192,7 +147,6 @@ function validate() {
   const empty_keys = filterEmptyKeys(form);
   let errors = arrayIntersection(empty_keys, required);
   hasEvery(Object.keys(years), empty_keys) && errors.push("years");
-  form.self_assessment && errors.push("already_assessed");
   var ni_regex = new RegExp("^[a-zA-Z]{2}[0-9]{6}[a-zA-Z]{1}$");
   if (![null, ""].includes(form.ni_number) && !ni_regex.test(form.ni_number)) {
     errors.push("invalid_ni");

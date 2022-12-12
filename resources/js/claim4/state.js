@@ -14,7 +14,9 @@ export default reactive({
     ],
     form: [
       {
-        self_assessment: null,
+        self_assessment: null
+      },
+      {
         ...years,
         less_earning: null,
         ni_number: null,
