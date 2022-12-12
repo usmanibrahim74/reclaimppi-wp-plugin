@@ -12,24 +12,9 @@
             <div
                 class="grid sm:grid-cols-2 sm:justify-items-center gap-x-6"
             >
-                <amount-box
-                    v-model="form.year_1"
-                    label="Apr 2018 - Mar 2020"
-                    :tooltip="messages.years"
-                />
-                <amount-box
-                    v-model="form.year_2"
-                    label="Apr 2018 - Mar 2019"
-                    :tooltip="messages.years"
-                />
-                <amount-box
-                    v-model="form.year_3"
-                    label="Apr 2018 - Mar 2019"
-                    :tooltip="messages.years"
-                />
-                <amount-box
-                    v-model="form.year_4"
-                    label="Apr 2018 - Mar 2019"
+                <amount-box v-for="i in range(1, 1, 4)"
+                    v-model="form['year_'+i]"
+                    :label="`Apr ${2018+i-1} - Mar ${2018+i}`"
                     :tooltip="messages.years"
                 />
                 <div class="flex justify-start w-full mt-4">
@@ -65,7 +50,7 @@
         </div>
         <div class="mt-6 mb-2">
             <input-text
-                label="National insurance (NI) Number"
+                label="National Insurance (NI) Number"
                 v-model="form.ni_number"
             >
                 <span
@@ -112,7 +97,7 @@ import AmountBox from "../../components/tailwind/AmountBox.vue";
 import AmountTitle from "../../components/tailwind/AmountTitle.vue";
 import { computed, reactive } from "vue";
 import Reusable from "./../../reuseable";
-const { filterEmptyKeys, hasEvery, arrayIntersection } = Reusable();
+const { filterEmptyKeys, hasEvery, arrayIntersection, range } = Reusable();
 
 import {years, messages} from "./../options.json";
 

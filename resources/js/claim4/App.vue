@@ -13,12 +13,13 @@ import ProgressStep from './../components/tailwind/ProgressStep.vue';
 
 
 function stepForward() {
-  if (state.step >= 1 && state.step <= 4) {
+  if (state.step >= 1 && state.step <= 5) {
     state.step++;
+    scrollUp();
   }
 }
 function stepBack() {
-  if (state.step > 1 && state.step <= 4) state.step--;
+  if (state.step > 1 && state.step <= 5) state.step--;
 }
 async function submit() {
   
@@ -32,6 +33,9 @@ async function submit() {
   const response = await axios.post(state.url, form);
   state.loading = false
   window.location.href = '/thank-you?reference='+response.data.claimID
+}
+function scrollUp(){
+  document.getElementById('app').scrollIntoView();
 }
 </script>
 

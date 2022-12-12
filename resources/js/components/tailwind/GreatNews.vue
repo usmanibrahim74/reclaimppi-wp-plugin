@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <h3 class="my-11 font-normal">Great News!</h3>
+        <h3 class="my-11 font-normal text-5xl mt-10 mb-3">Great News!</h3>
         <p class="font-medium mb-3">
             <span class="text-green-600">Congratulations, </span> You 100% meet
             the criteria
