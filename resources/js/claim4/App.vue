@@ -19,7 +19,10 @@ function stepForward() {
   }
 }
 function stepBack() {
-  if (state.step > 1 && state.step <= 5) state.step--;
+  if (state.step > 1 && state.step <= 5) {
+    state.step--;
+    scrollUp();
+  }
 }
 async function submit() {
   
