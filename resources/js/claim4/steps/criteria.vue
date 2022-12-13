@@ -8,10 +8,10 @@
           text="Please press proceed if you were NOT self-employed the year you got your PPI refund."
           />
           <!-- text="I was NOT self-employed the year I received my PPI refund." -->
-      <div class="flex gap-5 justify-center mt-6">
+      <div class="flex flex-col md:flex-row gap-5 justify-center mt-6">
         <button
           type="button"
-          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-3 px-10 sm:py-4 sm:px-20 rounded"
+          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-4 px-20 rounded"
           @click="failed"
         >
         I was self-employed
@@ -19,7 +19,7 @@
 
         <button @click="passed"
           type="button"
-          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-3 px-10 sm:py-4 sm:px-20 rounded"
+          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-4 px-20 rounded"
         >
         Proceed
         </button>
