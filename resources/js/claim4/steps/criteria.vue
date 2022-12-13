@@ -9,6 +9,13 @@
           />
           <!-- text="I was NOT self-employed the year I received my PPI refund." -->
       <div class="flex flex-col md:flex-row gap-5 justify-center mt-6">
+        
+        <button @click="passed"
+          type="button"
+          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-4 px-20 rounded"
+        >
+        Proceed
+        </button>
         <button
           type="button"
           class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-4 px-20 rounded"
@@ -17,12 +24,6 @@
         I was self-employed
         </button>
 
-        <button @click="passed"
-          type="button"
-          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-4 px-20 rounded"
-        >
-        Proceed
-        </button>
       </div>
     </div>
 </template>
