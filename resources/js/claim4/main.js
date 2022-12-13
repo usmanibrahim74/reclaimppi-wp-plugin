@@ -22,12 +22,15 @@ import withUUID from "vue-uuid";
 import VueSignaturePad from 'vue-signature-pad';
 
 
+import mitt from 'mitt'
+const emitter = mitt()
 
 import App from "./App.vue";
+const app = createApp(App)
+app.provide('emitter', emitter)
 
-// withUUID(
-    createApp(App)
-    .use(VueSignaturePad)
+// withUUID(c
+    app.use(VueSignaturePad)
     .component('IconInfo', IconInfo)
     .component('IconNext', IconNext)
     .component('IconPrevious', IconPrevious)

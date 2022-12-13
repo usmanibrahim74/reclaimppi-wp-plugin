@@ -1,22 +1,11 @@
 <template lang="">
-    <vue-final-modal
-            v-slot="{ close }"
-            classes="flex justify-center items-center"
-            content-class="relative flex flex-col w-[500px] max-h-full mx-4 border dark:border-gray-800 rounded bg-white dark:bg-gray-900"
-            v-model="state.showAssessmentModal"
-        >
-        <ModalMarkup
-            title="Warning!!!"
-            :text="messages.self_assessment"
-            @close="close"
-        />
-    </vue-final-modal>
+    
     <step-title title="Is the below statement true?" />
     <div class="mt-6 mb-4">
       <question
           labelFor=""
-          class="text-center"
-          text="Please press proceed if you were NOT self-employed the year you got your PPI refund"
+          class="text-center max-w-[450px] mx-auto"
+          text="Please press proceed if you were NOT self-employed the year you got your PPI refund."
           />
           <!-- text="I was NOT self-employed the year I received my PPI refund." -->
       <div class="flex gap-5 justify-center mt-6">
@@ -30,7 +19,7 @@
 
         <button @click="passed"
           type="button"
-          class="bg-red-600 border-solid border-red-600 border-2 font-medium text-white flex items-center justify-center py-3 px-10 sm:py-4 sm:px-20 rounded"
+          class="border-red-600 border-solid border-2 font-medium text-red-600 flex items-center justify-center py-3 px-10 sm:py-4 sm:px-20 rounded"
         >
         Proceed
         </button>
@@ -38,15 +27,15 @@
     </div>
 </template>
 <script setup>
-import { computed, reactive } from "vue";
+import { computed, reactive, inject } from "vue";
 
-import {messages} from "./../options.json";
 import Reusable from "../../reuseable";
+
+const emitter = inject('emitter'); 
 const { filterEmptyKeys, arrayIntersection } = Reusable();
 let state = reactive({
   required: ["self_assessment"],
   errors: [],
-  showAssessmentModal: false,
 });
 const props = defineProps({
   modelValue: {
@@ -85,7 +74,7 @@ function passed(){
 }
 function failed(){
   form.self_assessment = true;
-  state.showAssessmentModal = true;
+  emitter.emit('toggleModal',{name: 'assessmentModal', show: true})
 }
 function next() {
   emit("forward");

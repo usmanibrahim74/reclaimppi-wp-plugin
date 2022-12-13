@@ -10,7 +10,7 @@ import About from "./steps/about.vue";
 import Contact from "./steps/contact.vue";
 import StartClaim from "./steps/start-claim.vue";
 import ProgressStep from './../components/tailwind/ProgressStep.vue';
-
+import Modal from "./modal.vue"
 
 function stepForward() {
   if (state.step >= 1 && state.step <= 5) {
