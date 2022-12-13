@@ -7,7 +7,7 @@
                     :title="s.title" :number="s.number" :step="i+1" :current="state.step" />
             </div>
 
-            <div class="max-w-[700px] mx-auto mt-20 bg-orange-50 py-5 px-5 lg:px-7 box-border">
+            <div class="max-w-[700px] mx-auto mt-10 md:mt-20 bg-orange-50 py-5 px-5 lg:px-7 box-border">
                 <div class="swizard_page1" v-if="state.step == 1">
                     <Criteria v-model="state.form[0]" @forward="stepForward" />
                 </div>
