@@ -25,14 +25,16 @@ function stepBack() {
   }
 }
 async function submit() {
-  
+
   state.loading = true
   const form = {
     ...state.form[0],
     ...state.form[1],
     ...state.form[2],
     ...state.form[3],
+    ...state.form[4],
   };
+
   const response = await axios.post(state.url, form);
   state.loading = false
   window.location.href = '/thank-you?reference='+response.data.claimID
@@ -42,5 +44,5 @@ function scrollUp(){
 }
 </script>
 
-  <template src="./template.html"></template>
+<template src="./template.html"></template>
 

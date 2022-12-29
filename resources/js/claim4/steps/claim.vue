@@ -1,8 +1,8 @@
 <template lang="">
-    
+
     <step-title title="Please enter your PPI Claim details" />
     <template v-if="form">
-        
+
         <div class="mt-6 mb-4">
             <question
                 text="Please provide us with the TOTAL amount you
@@ -97,9 +97,9 @@ import AmountBox from "../../components/tailwind/AmountBox.vue";
 import AmountTitle from "../../components/tailwind/AmountTitle.vue";
 import { computed, reactive } from "vue";
 import Reusable from "./../../reuseable";
+import {years, messages} from "./../options.json";
 const { filterEmptyKeys, hasEvery, arrayIntersection, range } = Reusable();
 
-import {years, messages} from "./../options.json";
 
 let state = reactive({
   showAssessmentModal: false,

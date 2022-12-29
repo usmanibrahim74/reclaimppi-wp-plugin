@@ -37,8 +37,8 @@
 <script setup>
 import { computed, reactive } from "vue";
 import Reusable from "./../../reuseable";
-const { range, hasSome, filterEmptyKeys, arrayIntersection } = Reusable();
 import { title, months, name, dob } from "./../options.json";
+const { range, hasSome, filterEmptyKeys, arrayIntersection } = Reusable();
 
 
 let state = reactive({

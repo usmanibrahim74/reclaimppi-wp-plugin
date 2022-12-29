@@ -51,16 +51,20 @@ function submit(){
     state.errors.push("signature");
     return;
   }
-  form.signature = data;
+  form.value.signature = data;
   emit('forward');
 }
 const form = computed({
   get() {
-      console.log(props)
     return props.modelValue;
   },
   set(value) {
-    emit("update:modelValue", value);
+    return new Proxy(props.modelValue, {
+        set (obj, key, value) {
+        emit('update:modelValue', { ...obj, [key]: value })
+        return true
+        }
+    })
   },
 });
 

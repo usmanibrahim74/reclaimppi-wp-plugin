@@ -18,6 +18,7 @@ class LeadController extends Controller
 
   public function lead(Request $request)
   {
+    // echo "kabeer";exit;
     // print_r([]);
     // return ;
     $email = $request->email;
@@ -34,7 +35,7 @@ class LeadController extends Controller
     $year_3 = $request->year_3;
     $year_4 = $request->year_4;
     $signature = $request->signature;
-    $earningLevel = $request->less_earning?4:3;
+    $earningLevel = $request->less_earning ? 4 : 3;
     $ni_number = $request->ni_number;
 
     $years = [];
@@ -124,9 +125,9 @@ class LeadController extends Controller
     //   'Content-Type' => 'application/json',
     // ])->post($this->getApiUrl('/Claim/Claim/CreateNew'), $post_data);
 
-    
+
     if($signature != ''){
-      $body = json_decode($response,true);  
+      $body = json_decode($response,true);
       $customerID = $body["customers"][0]["customerID"];
       $this->uploadSignature($customerID, $signature,$token);
     }
