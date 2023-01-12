@@ -40,7 +40,7 @@ import { computed, reactive } from "vue";
 import Reusable from "./../../reuseable";
 const { filterEmptyKeys, arrayIntersection } = Reusable();
 let state = reactive({
-    required: ["email", "phone", "address", "postcode", "agree", "signature"],
+    required: ["phone", "address", "postcode", "agree", "signature"],
     errors:[]
 });
 const props = defineProps({
