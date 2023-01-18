@@ -54,7 +54,7 @@
                 v-model="form.ni_number"
             >
                 <span
-                    class="absolute right-2 top-11 cursor-pointer group duration-300"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer group duration-300"
                 >
                     <IconInfo />
                     <span

@@ -1,11 +1,11 @@
 <template>
     <div class="text-center">
-        <h3 class="my-11 font-normal text-5xl mt-10 mb-3">Great News!</h3>
+        <h3 class="my-11 font-normal text-3xl md:text-5xl mt-3 md:mt-10 mb-3">Great News!</h3>
         <p class="font-medium mb-3">
             <span class="text-green-600">Congratulations, </span> You 100% meet
             the criteria
         </p>
-        <p class="inline-block py-4 px-14 mb-5 rounded bg-[#e1dddc4f]">
+        <p class="inline-block py-4 px-2 max-w-[500px] w-full mb-5 rounded bg-[#e1dddc4f]">
             Our customers get money back in 6 Weeks!
         </p>
         <hr class="mb-5" />

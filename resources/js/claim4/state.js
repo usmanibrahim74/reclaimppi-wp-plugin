@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import {years, name, dob} from "./options.json";
 export default reactive({
     url: "/ReclaimPPI/lead",
-    step: 1,
+    step: 5,
     loading: false,
     steps: [
         {title: "Criteria", number: 1 },

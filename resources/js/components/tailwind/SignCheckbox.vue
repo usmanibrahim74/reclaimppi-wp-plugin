@@ -37,7 +37,7 @@ function updateValue(event) {
 }
 </script>
 <template>
-  <div class="flex items-center mr-12">
+  <div class="flex items-start">
     <input
       :id="state.uuid"
       type="checkbox"
@@ -66,7 +66,7 @@ function updateValue(event) {
 
     <label
       :for="state.uuid"
-      class="ml-2 text-md font-medium text-gray-900 leading-tight"
+      class="ml-2 text-sm md:text-md font-medium text-gray-900 leading-tight"
       >{{ props.label }}</label
     >
   </div>

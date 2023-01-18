@@ -1,15 +1,17 @@
 <template>
-    <div class="relative">
+    <div>
         <question :labelFor="state.uuid" :text="label" />
-        <input
-            :id="state.uuid"
-            class="w-full pr-9 rounded border-slate-300 border bg-white"
-            :type="type"
-            :value="modelValue"
-            :disabled="disabled"
-            @input="$emit('update:modelValue', $event.target.value)"
-        />
-        <slot></slot>
+        <div class="relative">
+            <input
+                :id="state.uuid"
+                class="w-full pr-9 rounded border-slate-300 border bg-white"
+                :type="type"
+                :value="modelValue"
+                :disabled="disabled"
+                @input="$emit('update:modelValue', $event.target.value)"
+            />
+            <slot></slot>
+        </div>
     </div>
 </template>
 <script setup>
@@ -33,9 +35,9 @@ const props = defineProps({
         type: String,
         default: "",
     },
-    disabled:{
-        type:Boolean,
-        default:false,
-    }
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
 });
 </script>
