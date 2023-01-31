@@ -21,4 +21,5 @@ $router->get('/', function () use ($router) {
 });
 
 // $router->get('/', [ExampleController::class, '']);
-$router->post('/lead', 'LeadController@lead');
+$router->post('/lead/', 'LeadController@lead');
+$router->post('/lead/{form}', 'LeadController@lead');

@@ -16,7 +16,7 @@ class LeadController extends Controller
   {
   }
 
-  public function lead(Request $request)
+  public function lead(Request $request, $form)
   {
     // echo "kabeer";exit;
     // print_r([]);
@@ -71,6 +71,7 @@ class LeadController extends Controller
 
 
     $post_data = [
+      "externalID" => $request->externalID ?? null,
       "claimID" => 0,
       "type"  => 1,
       "referralCode" => "{$referal_code}",
@@ -99,15 +100,16 @@ class LeadController extends Controller
     $token = $this->authenticate();
 
 
+    $headers = [
+      'Content-Type: application/json',
+      'Accept: application/json',
+      'Authorization: Bearer  ' . $token
+    ];
 
     $s = curl_init();
     curl_setopt($s, CURLOPT_URL, $this->getApiUrl('/Claim/Claim/CreateNew'));
     curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($s, CURLOPT_HTTPHEADER, [
-      'Content-Type: application/json',
-      'Accept: application/json',
-      'Authorization: Bearer  ' . $token
-    ]);
+    curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($s, CURLOPT_POSTFIELDS, json_encode($post_data));
     $response = curl_exec($s);
     curl_close($s);
@@ -177,11 +179,21 @@ class LeadController extends Controller
 
   private function getApiUrl($url = '')
   {
+    $form = request()->route('form');
+    if($form){
+      return "http://reclaimmytax.uat.transitioncomputing.com/api/api" . $url;  
+    }
     return "https://reclaimmytax.taxadvisorygroup.co.uk/api/api" . $url;
   }
 
   private function getCredentials()
-  {
+  {$form = request()->route('form');
+    if($form){
+      return [
+        'username' => 'reclaimclient',
+        'password' => 'Password1'
+      ]; 
+    }
     return [
       'username' => 'reclaimclient',
       'password' => 'PasswordL1v3'

@@ -9,6 +9,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 export default defineConfig(() => {
     return {
         root: 'resources/js',
+        // root: 'resources/js/unbounce',
         build: {
             cssCodeSplit: true,
             rollupOptions: {
@@ -21,6 +22,7 @@ export default defineConfig(() => {
                 }
             },
             outDir: '../../public/dist'
+            // outDir: '../../../public/dist'
         },
         plugins: [vue(), vueJsx()],
         resolve: {

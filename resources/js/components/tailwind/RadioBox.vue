@@ -44,12 +44,11 @@ const props = defineProps({
             >
                 <div
                     v-if="isChecked"
-                    class="w-3 h-3 bg-green-400 rounded-full"
+                    class="w-3 h-3 bg-blue-500 rounded-full"
                 ></div>
             </div>
             <span
-                class="ml-2 text-md font-medium dark:text-gray-300"
-                :class="[isChecked ? 'text-green-400' : 'text-inherit']"
+                class="ml-2 text-md font-medium dark:text-gray-300 text-black"
             >
                 {{ props.label }}
             </span>

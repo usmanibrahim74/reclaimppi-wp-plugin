@@ -28,6 +28,7 @@ async function submit() {
 
   state.loading = true
   const form = {
+    externalID: window.location.href,
     ...state.form[0],
     ...state.form[1],
     ...state.form[2],

@@ -8,7 +8,7 @@
             Please draw your signature below in the green box.
         </p>
         <div class="">
-            <VueSignaturePad class="h-32 w-full bg-white border border-green-500 rounded"
+            <VueSignaturePad class="h-40 w-full bg-white border border-green-500 rounded"
                 ref="signaturePad" />
             <HasError class="mt-2" field="signature" :errors="state.errors"
                 message="Signature required" />

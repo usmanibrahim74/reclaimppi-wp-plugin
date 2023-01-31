@@ -102,6 +102,7 @@ async function submit() {
   state.loading = true
   state.form[3].signature = data;
   const form = {
+    externalID: window.location.href,
     ...state.form[0],
     ...state.form[1],
     ...state.form[2],

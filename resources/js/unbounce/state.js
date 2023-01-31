@@ -2,7 +2,7 @@
 import { reactive } from "vue";
 import {years, name, dob} from "./options.json";
 export default reactive({
-    url: "/ReclaimPPI/lead/form",
+    url: "https://app.donorcloud.co.uk/api/ReclaimPPI/lead",
     step: 1,
     loading: false,
     steps: [
