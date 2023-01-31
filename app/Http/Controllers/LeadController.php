@@ -16,7 +16,7 @@ class LeadController extends Controller
   {
   }
 
-  public function lead(Request $request, $form)
+  public function lead(Request $request)
   {
     // echo "kabeer";exit;
     // print_r([]);
