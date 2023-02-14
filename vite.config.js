@@ -19,6 +19,7 @@ export default defineConfig(() => {
                     claim3: './resources/js/claim3/index.html',
                     claim4: './resources/js/claim4/index.html',
                     claim5: './resources/js/claim5/index.html',
+                    claim6: './resources/js/claim6/index.html',
                 }
             },
             outDir: '../../public/dist'
