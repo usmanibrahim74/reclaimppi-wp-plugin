@@ -76,7 +76,7 @@ class LeadController extends Controller
       "type"  => 1,
       "referralCode" => "{$referal_code}",
       "company" => 1,
-      "source" => "PetrichorDigital",
+      "source" => $request->source ?? "PetrichorDigital",
       "customerSource" => "Website",
       "customers" => [
         [
