@@ -161,7 +161,7 @@ class LeadController extends Controller
 
     $response = curl_exec($curl);
     curl_close($curl);
-    return $response;
+    return response()->json($response)->header('Access-Control-Allow-Origin','*');
   }
 
   private function authenticate()
