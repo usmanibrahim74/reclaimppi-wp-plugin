@@ -1,13 +1,13 @@
 <template lang="">
     <div
-        class="absolute w-full h-full left-0 top-0 bg-gray-100 bg-opacity-70 z-30 flex flex-col justify-center"
+        class="absolute w-full h-full left-0 top-0 bg-[#05152e] bg-opacity-70 z-30 flex flex-col justify-center"
     >
         <div class="flex items-center justify-center">
             <div
-                class="w-40 h-40 border-t-4 border-b-4 border-gray-900 rounded-full animate-spin"
+                class="w-40 h-40 border-t-4 border-b-4 border-white rounded-full animate-spin"
             ></div>
         </div>
-        <div class="text-center mt-10 relative">
+        <div class="text-center mt-10 relative text-white">
             <p
                 class="font-medium text-3xl absolute transition-opacity left-1/2 -translate-x-1/2 w-full"
                 :class="[state.toggleText ? 'opacity-100' : 'opacity-0']"
