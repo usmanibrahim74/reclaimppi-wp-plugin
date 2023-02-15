@@ -25,6 +25,7 @@ $match = $_SERVER['SERVER_NAME']."/ReclaimPPI";
 
 // var_dump($url,$match);exit;
 if(strpos($url,$match) !== false){
+    print_r('hell');exit;
     require_once('public/index.php');
     exit;
 }
