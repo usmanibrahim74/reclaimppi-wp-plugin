@@ -7,6 +7,12 @@
 * Author URI: http://synergidigital.com
 **/
 
+function add_cors_http_header(){
+    header("Access-Control-Allow-Origin: *");
+}
+add_action('init','add_cors_http_header');
+
+
 include_once('wp/constants.php');
 include_once('wp/helpers.php');
 include_once('wp/filters.php');
