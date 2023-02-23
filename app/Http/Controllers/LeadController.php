@@ -68,10 +68,17 @@ class LeadController extends Controller
       ];
     }
 
+    $externalID = [
+      'id' => $request->externalID ?? "No External ID Given",
+      'user_agent' => $request->userAgent(),
+      "ip" => $request->ip(),
+    ];
+    $externalID = json_encode($externalID);
+
 
 
     $post_data = [
-      "externalID" => $request->externalID ?? null,
+      "externalID" => $externalID,
       "claimID" => 0,
       "type"  => 1,
       "referralCode" => "{$referal_code}",
