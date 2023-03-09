@@ -11,7 +11,7 @@ const props = defineProps({
 });
 </script>
 <template>
-    <div class="mb-1">
+    <div class="">
         <label :for="labelFor" class="text-lg font-bold">{{
             props.text
         }}</label>

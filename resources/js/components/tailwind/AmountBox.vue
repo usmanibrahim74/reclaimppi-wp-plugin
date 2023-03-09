@@ -1,6 +1,6 @@
 <template>
-    <div class="">
-        <label class="inline-block mt-3 mb-1" :for="state.uuid">{{
+    <div class="w-full">
+        <label v-if="label != ''" class="inline-block mt-3 mb-1" :for="state.uuid">{{
             label
         }}</label>
         <div class="relative">

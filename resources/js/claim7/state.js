@@ -1,8 +1,8 @@
 
 import { reactive } from "vue";
-import {years, name, dob} from "./options.json";
+import {name, dob} from "./options.json";
 export default reactive({
-    url: "https://reclaimmyppitax.co.uk/ReclaimPPI/lead",
+    url: "/ReclaimPPI/lead",
     step: 1,
     loading: false,
     steps: [
@@ -17,7 +17,11 @@ export default reactive({
         self_assessment: null
       },
       {
-        ...years,
+        amount: null,
+        years: [],
+      },
+      {
+
         less_earning: null,
         ni_number: null,
         cant_remember: null,

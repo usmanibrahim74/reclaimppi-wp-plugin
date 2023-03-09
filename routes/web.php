@@ -20,6 +20,10 @@ $router->get('/', function () use ($router) {
     return response()->json(['asd' => 'asdasd']);
 });
 
+
+
+$router->get('/fb', "ExampleController@index");
+
 // $router->get('/', [ExampleController::class, '']);
 $router->post('/lead/', 'LeadController@lead');
 $router->post('/lead/{form}', 'LeadController@lead');

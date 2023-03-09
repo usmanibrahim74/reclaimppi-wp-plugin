@@ -1,7 +1,7 @@
 <Modal />
-<div class="relative left-1/2 -translate-x-1/2 w-full md:w-[99vw] mt-6 md:mt-4 pt-14 overflow-hidden">
+<div class="relative left-1/2 -translate-x-1/2 w-[97vw] md:w-[99vw] mt-6 md:mt-4">
     <div class="max-w-[1000px] mx-auto">
-        <div class="mx-auto">
+        <div class="p-1 mx-auto">
             <div class="flex items-center">
                 <progress-step :is-last="state.steps.length == i+1" v-for="(s,i) in state.steps" :key="i"
                     :title="s.title" :number="s.number" :step="i+1" :current="state.step" />
@@ -15,18 +15,22 @@
                     <Claim v-model="state.form[1]" @forward="stepForward" />
                 </div>
 
-                <div class="swizard_page2" v-if="state.step == 3">
+                <div class="swizard_page1" v-if="state.step == 3">
+                    <Claim2 v-model="state.form[2]" @forward="stepForward" @backward="stepBack"  />
+                </div>
 
-                    <About v-model="state.form[2]" @forward="stepForward" @backward="stepBack" />
+                <div class="swizard_page2" v-if="state.step == 4">
+
+                    <About v-model="state.form[3]" @forward="stepForward" @backward="stepBack" />
 
                 </div>
 
-                <div class="swizard_page3" v-if="state.step == 4">
-                    <Contact v-model="state.form[3]" @forward="stepForward" @backward="stepBack" />
+                <div class="swizard_page3" v-if="state.step == 5">
+                    <Contact v-model="state.form[4]" @forward="stepForward" @backward="stepBack" />
                 </div>
 
-                <div class="swizard_page4" v-if="state.step == 5">
-                    <StartClaim v-model="state.form[4]" @forward="submit" @backward="stepBack"
+                <div class="swizard_page4" v-if="state.step == 6">
+                    <StartClaim v-model="state.form[5]" @forward="submit" @backward="stepBack"
                         :loading="state.loading" />
                 </div>
             </div>
