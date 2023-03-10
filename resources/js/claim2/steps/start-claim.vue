@@ -71,7 +71,7 @@ function submit() {
 }
 const form = computed({
     get() {
-        console.log(props);
+        
         return props.modelValue;
     },
     set(value) {

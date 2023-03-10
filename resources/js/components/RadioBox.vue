@@ -3,7 +3,6 @@
     import { reactive } from "@vue/reactivity";
     import { computed } from "@vue/runtime-core";
     import { uuid } from 'vue-uuid';
-    // console.log(this.$uuid.v4());
     let state = reactive({
         uuid: uuid.v4(),
     })

@@ -8,7 +8,6 @@ let state = reactive({
 const emit = defineEmits(["update:modelValue"]);
 
 const isChecked = computed(() => {
-  console.log(props.modelValue == props.value);
   return props.modelValue == props.value;
 });
 
@@ -32,7 +31,6 @@ const props = defineProps({
   },
 });
 function updateValue(event) {
-  console.log(event.target.checked);
   emit("update:modelValue", event.target.checked);
 }
 </script>

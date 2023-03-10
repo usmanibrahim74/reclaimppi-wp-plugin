@@ -57,7 +57,6 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue", "forward"]);
 const form = computed({
   get() {
-    console.log(props);
     return props.modelValue;
   },
   set(value) {

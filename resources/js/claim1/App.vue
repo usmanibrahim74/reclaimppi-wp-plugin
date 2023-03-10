@@ -27,7 +27,6 @@ const niCheckDisabled = computed(()=> {
 
 function selfAssesedClick(){
   setTimeout(()=>{
-    console.log(state.form[0]);
     state.showAssesmentModal = true
   },0)
 }
@@ -71,7 +70,6 @@ function validate() {
 }
 
 function stepForward() {
-  // console.log(state.form);
   if (validate() && state.step >= 1 && state.step <= 4) {
   
     state.step++;
@@ -106,7 +104,6 @@ async function submit() {
     ...state.form[3],
   };
   const response = await axios.post(state.url, form);
-  // console.log(response);
   // state.loading = false
   window.location.href = '/thank-you?reference='+response.data.claimID
 }

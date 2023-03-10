@@ -28,7 +28,7 @@ async function submit() {
 
   state.loading = true
   const form1 = state.form[1];
-  const amount = (form1.amount/form1.years.length).toFixed(2);
+  const amount = parseFloat((form1.amount/form1.years.length).toFixed(2));
   const years = {
     year_1 : form1.years.includes(2019) ? amount : 0,
     year_2 : form1.years.includes(2020) ? amount : 0,
