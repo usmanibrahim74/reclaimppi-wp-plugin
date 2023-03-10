@@ -2,7 +2,7 @@
 import { reactive } from "vue";
 import {name, dob} from "./options.json";
 export default reactive({
-    url: "/ReclaimPPI/lead",
+    url: "/ReclaimPPI/lead2",
     step: 1,
     loading: false,
     steps: [
