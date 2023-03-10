@@ -8,9 +8,10 @@ export default reactive({
     steps: [
         {title: "Criteria", number: 1 },
         {title: "PPI Claim Details", number: 2 },
-        {title: "About You", number: 3 },
-        {title: "Contact Details", number: 4 },
-        {title: "Start Claim", number: 5 },
+        {title: "PPI Claim Details", number: 3 },
+        {title: "About You", number: 4 },
+        {title: "Contact Details", number: 5 },
+        {title: "Start Claim", number: 6 },
     ],
     form: [
       {
