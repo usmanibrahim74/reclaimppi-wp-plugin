@@ -7,6 +7,7 @@
             />
             <div class="grid sm:justify-items-center gap-x-6">
                 <amount-box
+                    placeholder="Total Refund Amount"
                     v-model="form.amount"
                     label=""
                     :tooltip="messages.amount"

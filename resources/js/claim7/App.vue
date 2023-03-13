@@ -13,13 +13,13 @@ import ProgressStep from './../components/tailwind/ProgressStep.vue';
 import Modal from "./modal.vue"
 
 function stepForward() {
-  if (state.step >= 1 && state.step <= 5) {
+  if (state.step >= 1 && state.step <= 6) {
     state.step++;
     scrollUp();
   }
 }
 function stepBack() {
-  if (state.step > 1 && state.step <= 5) {
+  if (state.step > 1 && state.step <= 6) {
     state.step--;
     scrollUp();
   }

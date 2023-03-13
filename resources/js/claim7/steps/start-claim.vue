@@ -11,7 +11,7 @@
         <p class="mb-1">Please draw your signature below in the green box.</p>
         <div class="">
             <VueSignaturePad
-                class="w-full bg-white border border-green-500 rounded"
+                class="w-full h-40 md:h-auto bg-white border border-green-500 rounded"
                 ref="signaturePad"
             />
             <HasError

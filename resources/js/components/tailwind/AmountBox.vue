@@ -13,6 +13,7 @@
                 class="border-slate-300 border bg-white leading-normal py-3 pl-16 pr-10 rounded w-full"
                 type="number"
                 :value="modelValue"
+                :placeholder="placeholder"
                 @input="$emit('update:modelValue', $event.target.value)"
             />
             <span
@@ -46,5 +47,8 @@ const props = defineProps({
         default: "Tooltip",
     },
     modelValue: String,
+    placeholder: {
+        type: String,
+    }
 });
 </script>
