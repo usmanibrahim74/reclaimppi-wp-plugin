@@ -137,6 +137,7 @@ class LeadController extends Controller
 
     if ($signature != '') {
       $body = json_decode($response, true);
+      // dd($response);
       $customerID = $body["customers"][0]["customerID"];
       $this->uploadSignature($customerID, $signature, $token);
     }
@@ -336,6 +337,12 @@ class LeadController extends Controller
     return [
       'username' => 'reclaimclient',
       'password' => 'PasswordL1v3'
+    ];
+  }
+
+  public function thanks(){
+    return [
+      
     ];
   }
 }
