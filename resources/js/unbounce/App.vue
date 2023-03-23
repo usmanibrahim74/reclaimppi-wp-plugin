@@ -44,15 +44,10 @@ async function submit() {
     });
     state.loading = false;
     state.step = 6;
-    state.claim_id = response.data.claimID;
-
-        // get current URL
+    state.claim_id = response.data.claimID
+    
     var currentUrl = window.location.href;
-
-    // add parameter to URL
     var newUrl = currentUrl + (/\?/.test(currentUrl) ? '&' : '?') + 'process=completed';
-
-    // push new URL to history without reloading the page
     window.history.pushState({path:newUrl}, '', newUrl);
     // window.location.href = '/thank-you?reference='+response.data.claimID+"&process=completed"
 }

@@ -40,8 +40,9 @@ async function submit() {
 
   const response = await axios.post(state.url, form);
   state.loading = false
-  state.step = 6;
-  state.claim_id=response.data.claimID;
+  // state.step = 6;
+  // state.claim_id=response.data.claimID;
+  window.location.href = '/thank-you?reference='+response.data.claimID+"&process=completed"
 }
 function scrollUp(){
   document.getElementById('app').scrollIntoView();

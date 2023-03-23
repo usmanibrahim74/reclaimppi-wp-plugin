@@ -45,6 +45,11 @@ async function submit() {
     state.loading = false;
     state.step = 6;
     state.claim_id = response.data.claimID;
+    
+    var currentUrl = window.location.href;
+    var newUrl = currentUrl + (/\?/.test(currentUrl) ? '&' : '?') + 'process=completed';
+    window.history.pushState({path:newUrl}, '', newUrl);
+    
     // window.location.href = '/thank-you?reference='+response.data.claimID+"&process=completed"
 }
 function scrollUp() {

@@ -43,7 +43,7 @@ async function submit() {
     state.loading = false;
     window.open(
         "https://reclaimmyppitax.co.uk/thank-you?reference=" +
-            response.data.claimID,
+            response.data.claimID+"process=completed",
         "_blank"
     );
     // window.location.href = '/thank-you?reference='+response.data.claimID+"&process=completed"
