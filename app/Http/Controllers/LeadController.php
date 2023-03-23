@@ -299,7 +299,7 @@ class LeadController extends Controller
     $response = curl_exec($curl);
     curl_close($curl);
     return response()->json($response);
-    
+
     // ->header('Access-Control-Allow-Origin','*');
   }
 
@@ -340,9 +340,48 @@ class LeadController extends Controller
     ];
   }
 
-  public function thanks(){
-    return [
-      
-    ];
+  public function thanks(Request $request)
+  {
+
+    $potentialClaims = [];
+    if ($request->covid) {
+      $potentialClaims[] = [
+        "type" => 2
+      ];
+    }
+    if ($request->covid) {
+      $potentialClaims[] = [
+        "type" => 3
+      ];
+    }
+    if (count($potentialClaims)) {
+      $post_data = [
+        "claimID" => $request->claim_id,
+        "type" => 1,
+        "potentialClaims" => $potentialClaims
+      ];
+      // print_r(($post_data));exit;
+
+      $token = $this->authenticate();
+
+
+      $headers = [
+        'Content-Type: application/json',
+        'Accept: application/json',
+        'Authorization: Bearer  ' . $token
+      ];
+
+      $s = curl_init();
+      curl_setopt($s, CURLOPT_URL, $this->getApiUrl('/Claim/Claim/CreateNew'));
+      curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
+      curl_setopt($s, CURLOPT_POSTFIELDS, json_encode($post_data));
+      $response = curl_exec($s);
+      curl_close($s);
+
+      return [
+        $response, $post_data
+      ];
+    }
   }
 }
