@@ -29,3 +29,6 @@ $router->post('/lead/', 'LeadController@lead');
 $router->post('/lead2', 'LeadController@lead2');
 $router->post('/thanks', 'LeadController@thanks');
 $router->post('/lead/{form}', 'LeadController@lead');
+
+$router->get('/get/{id}', 'LeadController@get');
+

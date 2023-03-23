@@ -16,6 +16,38 @@ class LeadController extends Controller
   {
   }
 
+  public function get($id, Request $request){
+
+    if($request->secret != "synergi"){
+      return null;
+    }
+
+    $post_data = [
+      "claimID" => $id,
+      "type" => 1,
+    ];
+    $token = $this->authenticate();
+
+
+
+    $headers = [
+      'Content-Type: application/json',
+      'Accept: application/json',
+      'Authorization: Bearer  ' . $token
+    ];
+
+    $s = curl_init();
+    curl_setopt($s, CURLOPT_URL, $this->getApiUrl('/Claim/Customer/GetByClaimID?claimID='.$id.'&type=1'));
+    curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($s, CURLOPT_HTTPHEADER, $headers);
+    // curl_setopt($s, CURLOPT_POSTFIELDS, json_encode($post_data));
+    $response = curl_exec($s);
+    curl_close($s);
+
+    return $response;
+
+  }
+
   public function lead(Request $request)
   {
     // echo "kabeer";exit;
@@ -357,7 +389,6 @@ class LeadController extends Controller
     if (count($potentialClaims)) {
       $post_data = [
         "claimID" => $request->claim_id,
-        "type" => 1,
         "potentialClaims" => $potentialClaims
       ];
       // print_r(($post_data));exit;

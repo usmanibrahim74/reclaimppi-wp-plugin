@@ -2,8 +2,10 @@
 import { reactive } from "vue";
 import {years, name, dob} from "./options.json";
 export default reactive({
-    url: "https://reclaimmyppitax.co.uk/ReclaimPPI/lead",
+    leadUrl: "https://reclaimmyppitax.co.uk/ReclaimPPI/lead",
+    thanksUrl: "https://reclaimmyppitax.co.uk/ReclaimPPI/thanks",
     step: 1,
+    claim_id: null,
     loading: false,
     steps: [
         {title: "Criteria", number: 1 },

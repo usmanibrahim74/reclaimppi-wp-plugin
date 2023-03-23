@@ -9,6 +9,7 @@ import Claim from "./steps/claim.vue";
 import About from "./steps/about.vue";
 import Contact from "./steps/contact.vue";
 import StartClaim from "./steps/start-claim.vue";
+import ThankYou from "./steps/thankyou.vue";
 import ProgressStep from './../components/tailwind/ProgressStep.vue';
 import Modal from "./modal.vue"
 
@@ -39,7 +40,8 @@ async function submit() {
 
   const response = await axios.post(state.url, form);
   state.loading = false
-  window.location.href = '/26-thanks?reference='+response.data.claimID
+  state.step = 6;
+  state.claim_id=response.data.claimID;
 }
 function scrollUp(){
   document.getElementById('app').scrollIntoView();

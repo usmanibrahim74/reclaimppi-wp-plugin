@@ -38,7 +38,7 @@ async function submit() {
 
   const response = await axios.post(state.url, form);
   state.loading = false
-  window.location.href = '/thank-you?reference='+response.data.claimID
+  window.location.href = '/thank-you?reference='+response.data.claimID+"&process=completed"
 }
 function scrollUp(){
   document.getElementById('app').scrollIntoView();

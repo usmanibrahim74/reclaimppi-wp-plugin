@@ -10,6 +10,9 @@ export default defineConfig(() => {
     return {
         root: 'resources/js',
         // root: 'resources/js/unbounce',
+        esbuildOptions:{
+          target: 'es5'
+        },
         build: {
             cssCodeSplit: true,
             rollupOptions: {
@@ -21,6 +24,7 @@ export default defineConfig(() => {
                     claim5: './resources/js/claim5/index.html',
                     claim6: './resources/js/claim6/index.html',
                     claim7: './resources/js/claim7/index.html',
+                    claim8: './resources/js/claim8/index.html',
                 }
             },
             outDir: '../../public/dist'
