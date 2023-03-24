@@ -18,8 +18,6 @@ export default defineConfig(() => {
             rollupOptions: {
                 input: {
                     claim1: './resources/js/claim1/index.html',
-                    claim2: './resources/js/claim2/index.html',
-                    claim3: './resources/js/claim3/index.html',
                     claim4: './resources/js/claim4/index.html',
                     claim5: './resources/js/claim5/index.html',
                     claim6: './resources/js/claim6/index.html',

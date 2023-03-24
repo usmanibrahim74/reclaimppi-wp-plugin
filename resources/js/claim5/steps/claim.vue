@@ -14,7 +14,7 @@
             >
                 <amount-box v-for="i in range(1, 1, 4)"
                     v-model="form['year_'+i]"
-                    :label="`Apr ${2018+i-1} - Mar ${2018+i}`"
+                    :label="`Apr ${2019+i-1} - Mar ${2019+i}`"
                     :tooltip="messages.years"
                 />
                 <div class="flex justify-start w-full mt-4">
