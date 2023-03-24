@@ -25,10 +25,10 @@ $router->get('/', function () use ($router) {
 $router->get('/fb', "ExampleController@index");
 
 // $router->get('/', [ExampleController::class, '']);
-$router->post('/lead/', 'LeadController@lead');
+$router->post('/lead/', 'LeadController@lead2');
 $router->post('/lead2', 'LeadController@lead2');
 $router->post('/thanks', 'LeadController@thanks');
-$router->post('/lead/{form}', 'LeadController@lead');
+$router->post('/lead/{form}', 'LeadController@lead2');
 
 $router->get('/get/{id}', 'LeadController@get');
 
