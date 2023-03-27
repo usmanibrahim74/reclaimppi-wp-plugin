@@ -350,22 +350,20 @@ class LeadController extends Controller
 
   private function getApiUrl($url = '')
   {
-    // $form = request()->route('form');
-    // if($form){
-    //   return "http://reclaimmytax.uat.transitioncomputing.com/api/api" . $url;  
-    // }
+    if(request()->test == "true"){
+      return "http://reclaimmytax.uat.transitioncomputing.com/api/api" . $url;  
+    }
     return "https://reclaimmytax.taxadvisorygroup.co.uk/api/api" . $url;
   }
 
   private function getCredentials()
   {
-    // $form = request()->route('form');
-    // if ($form) {
-    //   return [
-    //     'username' => 'reclaimclient',
-    //     'password' => 'Password1'
-    //   ];
-    // }
+    if (request()->test == "true") {
+      return [
+        'username' => 'reclaimclient',
+        'password' => 'Password1'
+      ];
+    }
     return [
       'username' => 'reclaimclient',
       'password' => 'PasswordL1v3'
