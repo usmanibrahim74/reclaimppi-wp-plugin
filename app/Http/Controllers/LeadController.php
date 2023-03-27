@@ -302,10 +302,7 @@ class LeadController extends Controller
       $customerID = $body["customers"][0]["customerID"];
       $this->uploadSignature($customerID, $signature, $token);
     }
-    return ([
-      $post_data,
-      $response
-    ]);
+    return ($response);
     exit;
   }
 
