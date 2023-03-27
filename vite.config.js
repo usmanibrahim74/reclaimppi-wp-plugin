@@ -9,7 +9,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 export default defineConfig(() => {
     return {
         root: 'resources/js',
-        // root: 'resources/js/unbounce',
+        // root: 'resources/js/unbounce1',
         esbuildOptions:{
           target: 'es5'
         },
@@ -23,6 +23,8 @@ export default defineConfig(() => {
                     claim6: './resources/js/claim6/index.html',
                     claim7: './resources/js/claim7/index.html',
                     claim8: './resources/js/claim8/index.html',
+                    unbounce1: './resources/js/unbounce1/index.html',
+                    unbounce2: './resources/js/unbounce2/index.html',
                 }
             },
             outDir: '../../public/dist'

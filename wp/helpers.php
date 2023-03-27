@@ -1,10 +1,9 @@
 <?php 
-function get_claim_file($claim_number = null){
-    $claim_number = (int) $claim_number;
-    if(!$claim_number){
+function get_claim_file($claim = null){
+    if(!$claim){
         return "";
     }
-    $claim_dir = CLAIMS_DIR."/claim$claim_number/";
+    $claim_dir = CLAIMS_DIR."/$claim/";
     $claim_file = $claim_dir."index.html";
     // print_r($claim_file);exit;
     // $content = file_get_contents($claim_file);
