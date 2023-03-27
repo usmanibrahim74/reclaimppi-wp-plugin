@@ -35,7 +35,8 @@ async function submit() {
         ...state.form[4],
     };
 
-    const response = await axios.post(state.leadUrl+"?test=true", form, {
+    // const response = await axios.post(state.leadUrl+"?test=true", form, {
+    const response = await axios.post(state.leadUrl, form, {
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "*",
