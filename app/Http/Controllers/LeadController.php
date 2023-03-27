@@ -61,7 +61,7 @@ class LeadController extends Controller
     $dob = $request->year . '-' . $request->month . '-' . $request->day;
     $streat_address = $request->address;
     $postal_code = $request->postcode;
-    $referal_code = $request->referal_code;
+    $referral_code = $request->referral_code;
     $year_1 = $request->year_1;
     $year_2 = $request->year_2;
     $year_3 = $request->year_3;
@@ -113,7 +113,7 @@ class LeadController extends Controller
       "externalID" => $externalID,
       "claimID" => 0,
       "type"  => 1,
-      "referralCode" => "{$referal_code}",
+      "referralCode" => "{$referral_code}",
       "company" => 1,
       "source" => $request->source ?? "PetrichorDigital",
       "customerSource" => "Website",
@@ -191,7 +191,7 @@ class LeadController extends Controller
     $dob = $request->year . '-' . $request->month . '-' . $request->day;
     $streat_address = $request->address;
     $postal_code = $request->postcode;
-    $referal_code = $request->referal_code;
+    $referral_code = $request->referral_code;
     $year_1 = $request->year_1;
     $year_2 = $request->year_2;
     $year_3 = $request->year_3;
@@ -243,7 +243,7 @@ class LeadController extends Controller
       "externalID" => $externalID,
       "claimID" => 0,
       "type"  => 1,
-      "referralCode" => "{$referal_code}",
+      "referralCode" => "{$referral_code}",
       "company" => 1,
       "source" => $request->source ?? "PetrichorDigital",
       "customerSource" => "Website",
