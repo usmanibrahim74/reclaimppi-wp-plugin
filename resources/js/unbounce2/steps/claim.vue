@@ -1,29 +1,7 @@
 <template lang="">
     <step-title title="Please enter your PPI Claim details" />
-    <template v-if="form">
-        <div class="mt-6 mb-4" v-if="state.part == 2">
-            <question
-                text="Please provide us with the TOTAL amount you
-                received for your PPI refunds in the relevant tax
-                years below:"
-            />
-            <div class="grid sm:grid-cols-2 sm:justify-items-center gap-x-6">
-                <amount-box
-                    v-for="i in range(1, 1, 4)"
-                    v-model="form['year_' + i]"
-                    :label="`Apr ${2019 + i - 1} - Mar ${2019 + i}`"
-                    :tooltip="messages.years"
-                />
-                <div class="flex justify-start w-full mt-4">
-                    <HasError
-                        field="years"
-                        :errors="state.errors"
-                        message="Please fill at least one record"
-                    />
-                </div>
-            </div>
-        </div>
-        <template v-if="state.part == 1">
+    <template v-show="form">
+        <div v-show="state.part == 1" class="swizard_page2">
             <div class="mt-6 mb-4">
                 <question
                     text="Were you earning less than £50,000 a year at the
@@ -79,7 +57,30 @@
                     :disabled="niCheckDisabled"
                 />
             </div>
-        </template>
+        </div>
+
+        <div class="mt-6 mb-4 swizard_page3" v-if="state.part == 2">
+            <question
+                text="Please provide us with the TOTAL amount you
+                received for your PPI refunds in the relevant tax
+                years below:"
+            />
+            <div class="grid sm:grid-cols-2 sm:justify-items-center gap-x-6">
+                <amount-box
+                    v-for="i in range(1, 1, 4)"
+                    v-model="form['year_' + i]"
+                    :label="`Apr ${2019 + i - 1} - Mar ${2019 + i}`"
+                    :tooltip="messages.years"
+                />
+                <div class="flex justify-start w-full mt-4">
+                    <HasError
+                        field="years"
+                        :errors="state.errors"
+                        message="Please fill at least one record"
+                    />
+                </div>
+            </div>
+        </div>
         <div class="flex flex-col items-center justify-center">
             <NextButton text="Continue" @click="next" />
             <BackButton text="Back" @click="back" />
@@ -151,11 +152,10 @@ function next() {
     }
 }
 
-
-function back(){
-    if(state.part == 2){
+function back() {
+    if (state.part == 2) {
         state.part = 1;
-    }else{
+    } else {
         emit("backward");
     }
 }

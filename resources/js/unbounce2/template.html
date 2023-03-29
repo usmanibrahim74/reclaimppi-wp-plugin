@@ -11,27 +11,27 @@
                 <div class="swizard_page1" v-show="state.step == 1">
                     <Criteria v-model="state.form[0]" @forward="stepForward" />
                 </div>
-                <div class="swizard_page1" v-show="state.step == 2">
+                <div v-show="state.step == 2">
                     <Claim v-model="state.form[1]" @forward="stepForward" @backward="stepBack" />
                 </div>
 
-                <div class="swizard_page2" v-if="state.step == 3">
+                <div class="swizard_page4" v-show="state.step == 3">
 
                     <About v-model="state.form[2]" @forward="stepForward" @backward="stepBack" />
 
                 </div>
 
-                <div class="swizard_page3" v-if="state.step == 4">
+                <div class="swizard_page5" v-show="state.step == 4">
                     <Contact v-model="state.form[3]" @forward="stepForward" @backward="stepBack" />
                 </div>
 
-                <div class="swizard_page4" v-if="state.step == 5">
+                <div class="swizard_page6" v-show="state.step == 5">
                     <StartClaim v-model="state.form[4]" @forward="submit" @backward="stepBack"
                         :loading="state.loading" />
                 </div>
 
 
-                <div class="swizard_page5" v-if="state.step == 6">
+                <div class="swizard_page7" v-show="state.step == 6">
                     <ThankYou :claim_id="state.claim_id" :url="state.thanksUrl" />
                 </div>
             </div>
